@@ -12,17 +12,17 @@ public class LRUCache {
     /*
     * @param capacity: An integer
     */
-    private ListNode dummy, tail;
     private int capacity, size;
-    private Map<Integer, ListNode> keyToPre;
+    private Map<Integer, ListNode> int2pre;
+    private ListNode dummy, tail;
     
     public LRUCache(int capacity) {
         // do intialization if necessary
-        dummy = new ListNode(0, 0);
-        tail = dummy;
+        this.int2pre = new HashMap<>();
+        this.dummy = new ListNode(0, 0);
+        this.tail = dummy;
         this.capacity = capacity;
-        size = 0;
-        keyToPre = new HashMap<>();
+        this.size = 0;
     }
 
     /*
@@ -30,30 +30,27 @@ public class LRUCache {
      * @return: An integer
      */
     
-    private void moveToTail (int key){
-        ListNode pre = keyToPre.get(key);
+    public void move2tail (int key){
+        ListNode pre = int2pre.get(key);
         ListNode curt = pre.next;
-        
         if (curt == tail){
             return;
         }
         
         pre.next = pre.next.next;
+        int2pre.put(pre.next.key, pre);
+        
         tail.next = curt;
-        // if (pre.next != null){
-            keyToPre.put(pre.next.key, pre);
-        // }
-        keyToPre.put(curt.key, tail);
+        int2pre.put(key, tail);
         tail = curt;
     }
     
     public int get(int key) {
         // write your code here
-        if (!keyToPre.containsKey(key)){
+        if (!int2pre.containsKey(key)){
             return -1;
         }
-        
-        moveToTail(key);
+        move2tail(key);
         
         return tail.val;
     }
@@ -66,27 +63,26 @@ public class LRUCache {
     public void set(int key, int value) {
         // write your code here
         if (get(key) != -1){
-            ListNode pre = keyToPre.get(key);
+            ListNode pre = int2pre.get(key);
             pre.next.val = value;
             return;
         }
         
         if (size < capacity){
-            ListNode node = new ListNode(key, value);
-            tail.next = node;
-            keyToPre.put(key, tail);
-            tail = node;
+            ListNode curt = new ListNode(key, value);
+            tail.next = curt;
+            int2pre.put(key, tail);
+            tail = curt;
             size++;
-            
             return;
         }
         
         ListNode first = dummy.next;
-        keyToPre.remove(first.key);
-        
+        int2pre.remove(first.key);
         first.key = key;
         first.val = value;
-        keyToPre.put(key, dummy);
-        moveToTail(key);
+        
+        int2pre.put(key, dummy);
+        move2tail(key);
     }
 }
