@@ -1,0 +1,50 @@
+public class Solution {
+    /**
+     * @param colors: A list of integer
+     * @param k: An integer
+     * @return: nothing
+     */
+    public void sortColors2(int[] colors, int k) {
+        // write your code here
+        if (colors == null || colors.length == 0){
+            return;
+        }
+        
+        rainbowSort(colors, 0, colors.length - 1, 1, k);
+    }
+    
+    private void rainbowSort (int[] nums,
+                              int start,
+                              int end,
+                              int colorFrom,
+                              int colorTo){
+        if (colorFrom >= colorTo){
+            return;
+        }
+        if (start >= end){
+            return;
+        }
+        
+        int left = start, right = end;
+        int colorMid = colorFrom + (colorTo - colorFrom) / 2;
+        while (left <= right){
+            while (left <= right && nums[left] <= colorMid){
+                left++;
+            }
+            while (left <= right && nums[right] > colorMid){
+                right--;
+            }
+            
+            if (left <= right){
+                int tmp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = tmp;
+                left++;
+                right--;
+            }
+        }
+        
+        rainbowSort(nums, start, right, colorFrom, colorMid);
+        rainbowSort(nums, left, end, colorMid + 1, colorTo);
+    }
+}
