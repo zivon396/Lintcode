@@ -1,4 +1,4 @@
-//version 1: 舒服版本
+//version 1: Heap
 public class Solution {
     /**
      * @param nums: A list of integers
@@ -20,120 +20,56 @@ public class Solution {
             });
         
         int curMedian;
-        if (k > 1) {
-            for (int i = 0; i < k - 1; i++){
-                maxHeap.add(nums[i]);
-                if (size % 2 == 0){
-                    if (!minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()){
-                        Integer maxPeek = maxHeap.poll();
-                        Integer minPeek = minHeap.poll();
-                        maxHeap.add(minPeek);
-                        minHeap.add(maxPeek);
-                    }
-                } else {
-                    minHeap.add(maxHeap.poll());
-                }
-                size++;
-            }
-        } else {
-            curMedian = 0;
+        int half = (k + 1) / 2;
+        
+        for (int i = 0; i < k - 1; i++){
+            add(maxHeap, minHeap, half, nums, i);
         }
         
         for (int i = k - 1; i < nums.length; i++) {
-            maxHeap.add(nums[i]);
-            if (size % 2 == 0){
-                if (!minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()){
-                    Integer maxPeek = maxHeap.poll();
-                    Integer minPeek = minHeap.poll();
-                    maxHeap.add(minPeek);
-                    minHeap.add(maxPeek);
-                }
-            } else {
-                minHeap.add(maxHeap.poll());
-            }
-            size++;
+            add(maxHeap, minHeap, half, nums, i);
             curMedian = maxHeap.peek();
             res.add(curMedian);
-            if (nums[i - k + 1] <= curMedian) {
-                maxHeap.remove(nums[i - k + 1]);
-                if (maxHeap.size() < minHeap.size()){
-                    maxHeap.add(minHeap.poll());
-                }
-            } else {
-                minHeap.remove(nums[i - k + 1]);
-                if (minHeap.size() + 1< maxHeap.size()){
-                    minHeap.add(maxHeap.poll());
-                }
-            }
-            size--;
+            remove(maxHeap, minHeap, nums, i - k + 1);
         }
         
         return res;
     }
-}
-
-//version 2: 答案heap版
-public class Solution {
-    /**
-     * @param nums: A list of integers
-     * @param k: An integer
-     * @return: The median of the element inside the window at each moving
-     */
-    public List<Integer> medianSlidingWindow(int[] nums, int k) {
-        // write your code here
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<Integer>();
-        }
-        List<Integer> res = new ArrayList<>();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(new Comparator<Integer> () {
-                public int compare(Integer x, Integer y) {
-                    return y - x;
-                }
-            });
-        
-        int curMedian;
-        if (k > 1) {
-            maxHeap.add(nums[0]);
-            for (int i = 1; i < k - 1; i++) {
-                int x = maxHeap.peek();
-                if (nums[i] <= x) {
-                    maxHeap.add(nums[i]);
-                } else {
-                    minHeap.add(nums[i]);
-                }
-            }
-            curMedian = maxHeap.peek();
+    
+    private void add(PriorityQueue<Integer> maxHeap,
+                     PriorityQueue<Integer> minHeap,
+                     int size,
+                     int[] nums,
+                     int index){
+        if (maxHeap.size() < size){
+            maxHeap.add(nums[index]);
         } else {
-            curMedian = 0;
+            minHeap.add(nums[index]);
         }
         
-        for (int i = k - 1; i < nums.length; i++) {
-            if (nums[i] <= curMedian) {
-                maxHeap.add(nums[i]);
-            } else {
-                minHeap.add(nums[i]);
-            }
-            while (maxHeap.size() > minHeap.size()+1) {
-                minHeap.add(maxHeap.poll());
-            }
-            while (maxHeap.size() < minHeap.size()) {
-                maxHeap.add(minHeap.poll());
-            }
-            curMedian = maxHeap.peek();
-            res.add(curMedian);
-            if (nums[i - k + 1] <= curMedian) {
-                maxHeap.remove(nums[i - k + 1]);
-            } else {
-                minHeap.remove(nums[i - k + 1]);
+        if (maxHeap.size() == size){
+            if (minHeap.size() > 0 && maxHeap.peek() > minHeap.peek()) {
+                Integer maxPeek = maxHeap.poll();
+                Integer minPeek = minHeap.poll();
+                maxHeap.add(minPeek);
+                minHeap.add(maxPeek);
             }
         }
-        
-        return res;
+    }
+    
+    private void remove (PriorityQueue<Integer> maxHeap,
+                     PriorityQueue<Integer> minHeap,
+                     int[] nums,
+                     int index){
+        if (nums[index] <= maxHeap.peek()){
+            maxHeap.remove(nums[index]);
+        } else {
+            minHeap.remove(nums[index]);
+        }
     }
 }
 
-//version 3: TreeSet
+//version 2: TreeSet
 import java.util.*;
 
 
