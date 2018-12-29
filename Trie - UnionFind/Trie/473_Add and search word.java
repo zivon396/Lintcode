@@ -1,3 +1,4 @@
+//version 1
 class TrieNode {
 
     public TrieNode[] children;
@@ -57,5 +58,83 @@ public class WordDictionary {
     public boolean search(String word) {
         // Write your code here
         return find(word, 0, root);
+    }
+}
+
+//version 2:
+class TrieNode {
+    public TrieNode[] children = null;
+    public boolean hasWord;
+    
+    public TrieNode (){
+        children = new TrieNode[26];
+        hasWord = false;
+    }
+    
+    public void insert (String word, int index){
+        if (index == word.length()){
+            hasWord = true;
+            return;
+        }
+        
+        int pos = word.charAt(index) - 'a';
+        if (children[pos] == null){
+            children[pos] = new TrieNode();
+        }
+        children[pos].insert(word, index + 1);
+    }
+    
+    public TrieNode search (String word, int index){
+        if (index == word.length()){
+            return this;
+        }
+        
+        if (word.charAt(index) == '.'){
+            for (int i = 0; i < 26; i++){
+                if (children[i] != null){
+                    TrieNode res = children[i].search(word, index + 1);
+                    if (res != null && res.hasWord){
+                        return res;
+                    }
+                }
+            }
+            return null;
+        } else {
+            int pos = word.charAt(index) - 'a';
+            if (children[pos] == null){
+                return null;
+            }
+            return children[pos].search(word, index + 1);
+        }
+    }
+}
+
+public class WordDictionary {
+    /*
+     * @param word: Adds a word into the data structure.
+     * @return: nothing
+     */
+    private TrieNode root;
+    
+    public WordDictionary (){
+        root = new TrieNode();
+    }
+    
+    public void addWord(String word) {
+        // write your code here
+        root.insert(word, 0);
+    }
+
+    /*
+     * @param word: A word could contain the dot character '.' to represent any one letter.
+     * @return: if the word is in the data structure.
+     */
+    public boolean search(String word) {
+        // write your code here
+        TrieNode node = root.search(word, 0);
+        if (node != null){
+            return node.hasWord;
+        }
+        return false;
     }
 }
