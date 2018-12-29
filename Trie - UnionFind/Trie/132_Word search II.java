@@ -117,18 +117,6 @@ class TrieNode {
         
         children[pos].insert(word, index + 1);
     }
-    
-    public TrieNode find (String word, int index){
-        if (index == word.length()){
-            return this;
-        }
-        
-        int pos = word.charAt(index) - 'a';
-        if (children[pos] == null){
-            return null;
-        }
-        return children[pos].find(word, index + 1);
-    }
 }
 public class Solution {
     /**
