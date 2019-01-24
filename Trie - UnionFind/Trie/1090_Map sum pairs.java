@@ -32,14 +32,14 @@ class TrieNode {
         return children[pos].find(word, index + 1);
     }
     
-    public int getSum (String prefix){
+    public int getSum (){
         int sum = 0;
         if (value > 0){
             sum += value;
         }
         for (int i = 0; i < 26; i++){
             if (children[i] != null){
-                sum += children[i].getSum(prefix + (char)('a' + i));
+                sum += children[i].getSum();
             }
         }
         
@@ -62,7 +62,7 @@ class MapSum {
     public int sum(String prefix) {
         TrieNode node = root.find(prefix, 0);
         if (node != null){
-            return node.getSum(prefix);
+            return node.getSum();
         }
         return 0;
     }
