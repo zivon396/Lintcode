@@ -22,3 +22,33 @@ public class Solution {
         return ans;
     }
 }
+
+// version 2:
+public class Solution {
+    /**
+     * @param s: a string
+     * @return: an integer
+     */
+    public int lengthOfLongestSubstring(String s) {
+        // write your code here
+        if (s == null){
+            return 0;
+        }
+        
+        char[] sc = s.toCharArray();
+        int[] cnt = new int[256];
+        int ans = 0;
+        int sum = 0;
+        
+        for (int l = 0, r = 0; r < sc.length; r++){
+            cnt[sc[r]]++;
+            while (cnt[sc[r]] > 1){
+                cnt[sc[l++]]--;
+            }
+            
+            ans = Math.max(ans, r - l + 1);
+        }
+        
+        return ans;
+    }
+}
