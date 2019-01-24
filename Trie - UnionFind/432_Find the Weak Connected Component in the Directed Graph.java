@@ -56,11 +56,7 @@ public class Solution {
         for (DirectedGraphNode now : nodes) {
 
             for (DirectedGraphNode neighbour : now.neighbors) {
-                int fnow = uf.find(now.label);
-                int fneighbour = uf.find(neighbour.label);
-                if (fnow != fneighbour) {
-                    uf.union(now.label, neighbour.label);
-                }
+                uf.union(now.label, neighbour.label);
             }
         }
 
