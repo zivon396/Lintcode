@@ -28,8 +28,9 @@ public class Solution {
             int temp = -1;
             int fa = x;
             while(fa != father.get(fa)) {
-                father.put(fa, parent) ;
-                fa = father.get(fa);
+                int tmp = father.get(fa);
+                father.put(fa, parent);
+                fa = tmp;
             }
             return parent;
         }
