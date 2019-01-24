@@ -54,13 +54,8 @@ public class Solution {
         UnionFind uf = new UnionFind(hashSet);
 
         for (UndirectedGraphNode now : nodes) {
-
             for (UndirectedGraphNode neighbour : now.neighbors) {
-                int fnow = uf.find(now.label);
-                int fneighbour = uf.find(neighbour.label);
-                if (fnow != fneighbour) {
-                    uf.union(now.label, neighbour.label);
-                }
+                uf.union(now.label, neighbour.label);
             }
         }
 
