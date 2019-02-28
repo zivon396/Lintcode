@@ -5,73 +5,65 @@ public class Solution {
      * @param k: An integer
      * @return: The median of the element inside the window at each moving
      */
+    private Comparator<Integer> heapCom = new Comparator<Integer>() {
+        public int compare (Integer x, Integer y){
+            return y - x;
+        }
+    };
+    private int half;
+    private Queue<Integer> maxHeap, minHeap;
+    
     public List<Integer> medianSlidingWindow(int[] nums, int k) {
         // write your code here
-        if (nums == null || nums.length == 0) {
-            return new ArrayList<Integer>();
-        }
-        int size = 0;
         List<Integer> res = new ArrayList<>();
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(new Comparator<Integer> () {
-                public int compare(Integer x, Integer y) {
-                    return y - x;
-                }
-            });
+        if (nums == null || nums.length == 0){
+            return res;
+        }
+        int len = nums.length;
+        half = (k + 1) / 2;
         
-        int curMedian;
-        int half = (k + 1) / 2;
+        maxHeap = new PriorityQueue<>(heapCom);
+        minHeap = new PriorityQueue<>();
         
         for (int i = 0; i < k - 1; i++){
-            add(maxHeap, minHeap, half, nums, i);
+            addNum(nums[i]);
         }
         
-        for (int i = k - 1; i < nums.length; i++) {
-            add(maxHeap, minHeap, half, nums, i);
-            curMedian = maxHeap.peek();
-            res.add(curMedian);
-            remove(maxHeap, minHeap, nums, i - k + 1);
+        for (int i = k - 1; i < len; i++){
+            addNum(nums[i]);
+            res.add(maxHeap.peek());
+            remove(nums[i - k + 1]);
         }
         
         return res;
     }
     
-    private void add(PriorityQueue<Integer> maxHeap,
-                     PriorityQueue<Integer> minHeap,
-                     int size,
-                     int[] nums,
-                     int index){
-        if (maxHeap.size() < size){
-            maxHeap.add(nums[index]);
+    private void addNum (int num){
+        if (maxHeap.size() < half){
+            maxHeap.add(num);
         } else {
-            minHeap.add(nums[index]);
+            minHeap.add(num);
         }
-        
-        if (maxHeap.size() == size){
-            if (minHeap.size() > 0 && maxHeap.peek() > minHeap.peek()) {
-                Integer maxPeek = maxHeap.poll();
-                Integer minPeek = minHeap.poll();
-                maxHeap.add(minPeek);
-                minHeap.add(maxPeek);
-            }
+        if (minHeap.size() > 0 && maxHeap.peek() > minHeap.peek()) {
+            Integer maxPeek = maxHeap.poll();
+            Integer minPeek = minHeap.poll();
+            maxHeap.add(minPeek);
+            minHeap.add(maxPeek);
         }
     }
     
-    private void remove (PriorityQueue<Integer> maxHeap,
-                     PriorityQueue<Integer> minHeap,
-                     int[] nums,
-                     int index){
-        if (nums[index] <= maxHeap.peek()){
-            maxHeap.remove(nums[index]);
+    private void remove (int num){
+        if (num <= maxHeap.peek()){
+            maxHeap.remove(num);
         } else {
-            minHeap.remove(nums[index]);
+            minHeap.remove(num);
         }
     }
 }
 
+
 //version 2: TreeSet
 import java.util.*;
-
 
 public class Solution {
     /**
