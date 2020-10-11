@@ -4,6 +4,9 @@ public class Solution {
      * @param divisor: the divisor
      * @return: the result
      */
+    // 本质上和 Pow(x, n) 是一样的, 都是把 n 分解为 2的幂的和
+    // Integer.MIN_VALUE 在取绝对值的时候会溢出，所以要用 long
+    // 时间复杂度应该是 (log(dividend/divisor))²
     public int divide(int dividend, int divisor) {
         // write your code here
         if (divisor == 0){
