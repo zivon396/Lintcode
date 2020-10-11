@@ -3,6 +3,7 @@ public class Solution {
      * @param nums: a rotated sorted array
      * @return: the minimum number in the array
      */
+    // 注意要用 nums[nums.length - 1] 来比较 -> array可能并没有rotated
     public int findMin(int[] nums) {
         // write your code here
         if (nums == null || nums.length == 0){
