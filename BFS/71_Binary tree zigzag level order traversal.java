@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// Queue + reverse
 public class Solution {
     /**
      * @param root: A Tree
@@ -48,5 +48,46 @@ public class Solution {
         }
         
         return res;
+    }
+}
+
+// Dequeue
+public class Solution {
+    /**
+     * @param root: A Tree
+     * @return: A list of lists of integer include the zigzag level order traversal of its nodes' values.
+     */
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        // write your code here
+        List<List<Integer>> result = new ArrayList<>();
+        if (null == root ) return result;
+        
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        boolean normalOrder = true;
+        
+        queue.offer(root);
+        
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+            LinkedList<Integer> temp = new LinkedList<>();
+            for (int i = 0; i < size; ++i) {
+                TreeNode p ;
+                if (normalOrder) {
+                    p = queue.poll();
+                    temp.addLast(p.val);    
+                } else {
+                    p = queue.poll();
+                    temp.addFirst(p.val);    
+                }
+                
+                if (p.left != null)
+                    queue.offer(p.left);
+                if (p.right != null)
+                    queue.offer(p.right);
+            }
+            normalOrder = !normalOrder;
+            result.add(temp);
+        }
+        return result;
     }
 }
