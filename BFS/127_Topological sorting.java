@@ -6,7 +6,7 @@
  *     DirectedGraphNode(int x) { label = x; neighbors = new ArrayList<DirectedGraphNode>(); }
  * };
  */
-
+// while loop 里面的 degrees.get() 不需要 default value, 因为之前 initialize degrees 的时候所有 neighbors 的 degree 都至少是 1 了。
 public class Solution {
     /*
      * @param graph: A list of Directed graph node
