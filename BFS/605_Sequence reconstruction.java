@@ -1,3 +1,7 @@
+// 1) 一定要理解题意, queue.size() 必须始终为 1
+// 2) 最好用 HashMap 作为 edges 的数据结构, 不然 index 会引起歧义
+// 3) degrees 注意 initialize 的长度为 n + 1
+// 4) 注意一系列的 return false 的条件
 public class Solution {
     /**
      * @param org: a permutation of the integers from 1 to n
