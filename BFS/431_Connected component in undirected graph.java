@@ -7,7 +7,7 @@
  * };
  */
 
-
+// 此题相当于重复利用 queue, 挨个检查 node, 不在 set 里就开始一次 BFS。
 public class Solution {
     /*
      * @param nodes: a array of Undirected graph node
