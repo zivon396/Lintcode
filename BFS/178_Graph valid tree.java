@@ -1,3 +1,5 @@
+// 注意理解 valid tree 的条件: 点数 = 边数 + 1
+// 注意 edge 要加两遍
 public class Solution {
     /**
      * @param n: An integer
@@ -41,6 +43,6 @@ public class Solution {
             }
         }
         
-        return count == n;
+        return count == n; // 这里也可以直接返回 set.size() == n
     }
 }
