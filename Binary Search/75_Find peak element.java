@@ -19,14 +19,10 @@ public class Solution {
             }
         }
         
-        if (nums[start] > nums[start + 1]){
+        if (nums[start] < nums[end]){
+            return end;
+        } else {
             return start;
         }
-        
-        if (nums[end] > nums[end + 1]){
-            return end;
-        }
-        
-        return -1;
     }
 }
