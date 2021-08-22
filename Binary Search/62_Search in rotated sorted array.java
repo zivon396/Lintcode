@@ -41,6 +41,7 @@ public class Solution {
 }
 
 // 方法 2: 以 target 和 nums[nums.length - 1] 为双重比较标准
+// 方法 2 更 make sense 一点 (也更好理解), 因为 target 和 nums[nums.length - 1] 是固定的, 所以应当以它俩为首要判定标准. 之后其实都只有一个小区间是特殊的.
 public class Solution {
     /**
      * @param A: an integer rotated sorted array
