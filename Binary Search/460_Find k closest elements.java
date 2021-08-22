@@ -5,6 +5,8 @@ public class Solution {
      * @param k: An integer
      * @return: an integer array
      */
+    // 先二分查找找位置, 再双指针. 直接用二分得到的 start 和 end 就可以, 最后也不用判断, 直接双 while 循环.
+    // 其实不用 Math.abs(), 因为一定有 nums[end] >=target && nums[start] <= target.
     public int[] kClosestNumbers(int[] nums, int target, int k) {
         // write your code here
         int[] res = new int[k];
