@@ -1,3 +1,4 @@
+// 注意 每一步都要 % b, 不然会越界.
 public class Solution {
     /**
      * @param a: A 32bit integer
