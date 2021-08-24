@@ -1,4 +1,4 @@
-// 方法 1: m 右移
+// 方法 1: m 右移 - 这里的 tail 从始至终就是 1, 所以其实可以不需要它.
 public class Solution {
     /**
      * @param x: the base number
