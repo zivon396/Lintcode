@@ -1,3 +1,4 @@
+// 最后记得加上 num, e.g. 6 = [2, 3]
 public class Solution {
     /**
      * @param num: An integer
