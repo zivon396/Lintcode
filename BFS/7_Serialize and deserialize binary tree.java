@@ -53,7 +53,7 @@ public class Solution {
      */
     // Queue里的元素仍然是 TreeNode; 直接把 String 的第一个值放到 Queue 里开始, 每次往后看 2 个值
     // index++ 最好在 if 中, 不然进入 else 语句后并不会自增
-    // 为什么 vals[index++] 最后不会溢出? (以 {3, 9, 20, #, #, 15, 7} 为例)
+    // 为什么 vals[index++] 最后不会溢出? (以 {3, 9, 20, #, #, 15, 7} 为例) -> while 循环里可以加一个条件 index < vals.length
     public TreeNode deserialize(String data) {
         // write your code here
         if (data == null || data.length() == 0){
