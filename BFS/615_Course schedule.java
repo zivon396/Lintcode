@@ -4,6 +4,7 @@ public class Solution {
      * @param prerequisites: a list of prerequisite pairs
      * @return: true if can finish all courses or false
      */
+    // 注意放进 List 里面的是 Object, 要转化成 int.
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         // write your code here
         int[] degrees = new int[numCourses];
