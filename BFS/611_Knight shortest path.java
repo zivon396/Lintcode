@@ -22,6 +22,10 @@ public class Solution {
             return 0;
         }
         
+        if (source.x == destination.x && source.y == destination.y){
+            return 0;
+        }
+        
         n = grid.length;
         m = grid[0].length;
         int[] dirX = {1, 1, 2, 2, -1, -1, -2, -2};
