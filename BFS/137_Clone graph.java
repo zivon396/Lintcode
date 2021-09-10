@@ -7,7 +7,7 @@
  * };
  */
 
-
+// 边 bfs 边 clone 是不行的，因为每次都会 new 一个新的 neighbor 出来 (丢失遍历过的 node).
 public class Solution {
     /*
      * @param node: A undirected graph node
