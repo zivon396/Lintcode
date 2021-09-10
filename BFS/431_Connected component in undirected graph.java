@@ -7,7 +7,8 @@
  * };
  */
 
-// 此题相当于重复利用 queue, 挨个检查 node, 不在 set 里就开始一次 BFS。
+// 此题相当于重复利用 queue, 挨个检查 node, 不在 set 里就开始一次 BFS.
+// graph 版的 number of islands
 public class Solution {
     /*
      * @param nodes: a array of Undirected graph node
@@ -46,5 +47,52 @@ public class Solution {
             }
         }
         return res;
+    }
+}
+
+
+// 也可以写个 bfs 函数, 传入 set 和 res.
+public class Solution {
+    /**
+     * @param nodes: a array of Undirected graph node
+     * @return: a connected set of a Undirected graph
+     */
+    public List<List<Integer>> connectedSet(List<UndirectedGraphNode> nodes) {
+        // write your code here
+        if (nodes == null){
+            return null;
+        }
+
+        List<List<Integer>> res = new ArrayList<>();
+        Set<UndirectedGraphNode> set = new HashSet<>();
+        
+        for (UndirectedGraphNode node: nodes){
+            if (!set.contains(node)){
+                bfs(node, set, res);
+            }
+        }
+
+        return res;
+    }
+
+    private void bfs (UndirectedGraphNode node, Set<UndirectedGraphNode> set, List<List<Integer>> res){
+        List<Integer> com = new ArrayList<>();
+        Queue<UndirectedGraphNode> queue = new LinkedList<>();
+        queue.offer(node);
+        set.add(node);
+
+        while (!queue.isEmpty()){
+            UndirectedGraphNode curt = queue.poll();
+            com.add(curt.label);
+            for (UndirectedGraphNode neighbor: curt.neighbors){
+                if (!set.contains(neighbor)){
+                    queue.offer(neighbor);
+                    set.add(neighbor);
+                }
+            }
+        }
+
+        Collections.sort(com);
+        res.add(com);
     }
 }
