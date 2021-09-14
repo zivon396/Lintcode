@@ -10,7 +10,7 @@
  * };
  */
 
-// version 1: 用set存储degree，不用再加一层for循环
+// version 1: 用 map 存储 degree, 不用再加一层 for 循环
 public class Solution {
     /*
      * @param graph: a list of Undirected graph node
