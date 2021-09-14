@@ -4,6 +4,8 @@ public class Solution {
      * @param dict: a set of n substrings
      * @return: the minimum length
      */
+    // Set 里存 str, str 的 neighbor 就是去掉一个 sub 之后的 next.
+    // 要再加一层 for 循环来遍历所有 sub
     public int minLength(String s, Set<String> dict) {
         // write your code here
         if (s == null || s.length() == 0){
