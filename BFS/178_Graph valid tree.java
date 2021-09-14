@@ -1,5 +1,7 @@
 // 注意理解 valid tree 的条件: 点数 = 边数 + 1
 // 注意 edge 要加两遍
+// 注意 遍历 List 元素时要转换成 int
+// 注意不能用 for(List edge: edges) 来遍历
 public class Solution {
     /**
      * @param n: An integer
