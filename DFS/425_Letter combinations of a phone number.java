@@ -1,3 +1,4 @@
+// 直接用 per.length() 来作判定, 可以省一层循环.
 public class Solution {
     /**
      * @param digits: A digital string
