@@ -1,3 +1,5 @@
+// 注意起始为 0 的情况
+// com 用 List<String> 比较好, 最后再 build string
 public class Solution {
     /**
      * @param s: the IP string
