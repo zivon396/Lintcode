@@ -1,3 +1,4 @@
+// 需要一个 int[] 来判断是否 visited
 public class Solution {
     /**
      * @param n: An integer
