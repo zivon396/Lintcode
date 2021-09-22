@@ -1,3 +1,4 @@
+// 注意 isValid 的条件
 public class Solution {
     /*
      * @param n: The number of queens
