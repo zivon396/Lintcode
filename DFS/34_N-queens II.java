@@ -1,3 +1,4 @@
+// 把是否重复的判断放在 isValid 里, 可以省去 set.
 public class Solution {
     /**
      * @param n: The number of queens.
