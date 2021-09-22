@@ -1,3 +1,5 @@
+// set 里加的是 index, 因为数字会重复
+// 注意 continue 的条件: set 不包含前一个重复的数字 -> 说明途经这个数字的所有排列都一定被遍历过一次了.
 public class Solution {
     /*
      * @param :  A list of integers
