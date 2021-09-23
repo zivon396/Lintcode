@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// traverse + divConq
 class ResultType {
     public int sum;
     public int num;
