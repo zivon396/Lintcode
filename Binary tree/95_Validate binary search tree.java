@@ -36,10 +36,11 @@ public class Solution {
 
 //version 2: divConq
 class ResultType {
-    public boolean isValid;
+    public boolean isValidBST;
     public long max, min;
-    public ResultType (boolean isValid, long max, long min){
-        this.isValid = isValid;
+
+    public ResultType (boolean isValidBST, long max, long min){
+        this.isValidBST = isValidBST;
         this.max = max;
         this.min = min;
     }
@@ -52,32 +53,33 @@ public class Solution {
      */
     public boolean isValidBST(TreeNode root) {
         // write your code here
-        ResultType res = divConq(root);
-        return res.isValid;
+        ResultType res = helper(root);
+
+        return res.isValidBST;
     }
-    
-    private ResultType divConq (TreeNode root){
+
+    private ResultType helper (TreeNode root){
         if (root == null){
             return new ResultType(true, Long.MIN_VALUE, Long.MAX_VALUE);
         }
-        
-        ResultType left = divConq(root.left);
-        ResultType right = divConq(root.right);
-        
-        if (!left.isValid || !right.isValid){
+
+        ResultType left = helper(root.left);
+        ResultType right = helper(root.right);
+
+        if (!left.isValidBST || !right.isValidBST){
             return new ResultType(false, -1, -1);
         }
-        
-        if (root.val <= left.max || root.val >= right.min){
+
+        if (left.max >= root.val || right.min <= root.val){
             return new ResultType(false, -1, -1);
         }
-        
-        long max = Math.max(left.max, right.max);
-        max = Math.max(root.val, max);
-        
-        long min = Math.min(left.min, right.min);
-        min = Math.min(root.val, min);
-        
-        return new ResultType(true, max, min);
+
+        ResultType res = new ResultType (
+            true,
+            Math.max(Math.max(root.val, left.max), right.max),
+            Math.min(Math.min(root.val, left.min), right.min)
+        );
+
+        return res;
     }
 }
