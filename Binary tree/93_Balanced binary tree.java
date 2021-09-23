@@ -17,7 +17,7 @@ class ResultType {
         this.maxHeight = maxHeight;
     }
 }
-
+// 注意是每个 node 的 subtree 深度差都不能超过 1
 public class Solution {
     /**
      * @param root: The root of binary tree.
