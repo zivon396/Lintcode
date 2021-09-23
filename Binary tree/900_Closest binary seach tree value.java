@@ -45,3 +45,36 @@ public class Solution {
         return root.val;
     }
 }
+
+// 方法二: 用 MIN_VALUE, 省去两个判断
+public class Solution {
+    /**
+     * @param root: the given BST
+     * @param target: the given target
+     * @return: the value in the BST that is closest to the target
+     */
+    public int closestValue(TreeNode root, double target) {
+        // write your code here
+        return helper(root, target);
+    }
+
+    private int helper (TreeNode root, double target){
+        if (root == null){
+            return Integer.MIN_VALUE;
+        }
+
+        if (root.val > target){
+            int left = helper(root.left, target);
+            if (Math.abs(left - target) < Math.abs(root.val - target)){
+                return left;
+            }
+        } else {
+            int right = helper(root.right, target);
+            if (Math.abs(right - target) < Math.abs(root.val - target)){
+                return right;
+            }
+        }
+
+        return root.val;
+    }
+}
