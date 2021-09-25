@@ -18,6 +18,7 @@
  *     }
  * }
  */
+// 每次 new 一个 DoublyListNode
 class ResultType {
     DoublyListNode first, last;
     
