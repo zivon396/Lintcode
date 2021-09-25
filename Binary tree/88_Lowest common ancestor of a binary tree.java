@@ -9,8 +9,7 @@
  *     }
  * }
  */
-
-
+// 分几种情况: 1) A 和 B 分别在两侧 -> root 一定是 LCA. 2) A 和 B 在同一侧 -> LCA在那一侧, 且 LCA 会被一直返回到最高节点
 public class Solution {
     /*
      * @param root: The root of the binary search tree.
