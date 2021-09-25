@@ -66,3 +66,58 @@ public class Solution {
         return new ResultType(a_exist, b_exist, null);
     }
 }
+
+// 也可以这么写
+public class Solution {
+    /*
+     * @param root: The root of the binary tree.
+     * @param A: A TreeNode
+     * @param B: A TreeNode
+     * @return: Return the LCA of the two nodes.
+     */
+    public TreeNode lowestCommonAncestor3(TreeNode root, TreeNode A, TreeNode B) {
+        // write your code here
+        ResultType res = helper(root, A, B);
+
+        if (res.a_exist && res.b_exist){
+            return res.node;
+        }
+
+        return null;
+    }
+
+    private ResultType helper (TreeNode root, TreeNode A, TreeNode B){
+        if (root == null){
+            return new ResultType(root, false, false);
+        }
+
+        ResultType left = helper(root.left, A, B);
+        ResultType right = helper(root.right, A, B);
+
+        ResultType res = new ResultType(
+            null,
+            left.a_exist || right.a_exist || root == A,
+            left.b_exist || right.b_exist || root == B
+        );
+
+        if (root == A || root == B){
+            res.node = root;
+            return res;
+        }
+
+        if (left.node != null && right.node != null){
+            res.node = root;
+            return res;
+        }
+
+        if (left.node != null){
+            res.node = left.node;
+        }
+
+        if (right.node != null){
+            res.node = right.node;
+        }
+
+        return res;
+    }
+}
