@@ -9,7 +9,9 @@
  *     }
  * }
  */
-
+// 两种情况: 拐弯/不拐弯的 path
+// 拐弯的 path 可由左右子树的 single path 和 root 生成
+// 子树的 single path 值为 0 时 -> max path 为 1) 另一条 single path. 2) 另一子树里的拐弯 path.
 public class Solution {
     /**
      * @param root: The root of binary tree.
