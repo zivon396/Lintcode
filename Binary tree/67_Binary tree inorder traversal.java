@@ -35,7 +35,8 @@ public class Solution {
     }
 }
 
-//version 2: stack
+// version 2: stack
+// 每次都先一直深入到最左边
 public class Solution {
     /**
      * @param root: A Tree
