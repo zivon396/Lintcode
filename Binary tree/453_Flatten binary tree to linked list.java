@@ -9,7 +9,8 @@
  *     }
  * }
  */
-//version 1: divConq
+// version 1: divConq
+// helper 返回的值是已构建好的 linked list 的最右边的 node
 public class Solution {
     /**
      * @param root: a TreeNode, the root of the binary tree
@@ -45,7 +46,9 @@ public class Solution {
     }
 }
 
-//version 2: traverse
+// version 2: traverse
+// 对于 right, lastNode 是 left 的最右边的 node
+// 对于 left, lastNode 是 root
 public class Solution {
     private TreeNode lastNode = null;
     /**
