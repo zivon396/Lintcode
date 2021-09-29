@@ -12,7 +12,7 @@ public class Solution {
         }
         
         int left = 0, right = nums.length - 1;
-        while (left <= right){
+        while (left < right){
             if (nums[left] + nums[right] == target){
                 res[0] = left + 1;
                 res[1] = right + 1;
