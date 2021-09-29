@@ -9,6 +9,7 @@
  *     }
  * }
  */
+// version 1: recursion
 // 本质上和 ResultType 是一样的 -> 都是 recursion 里初始化一个新的 res 并返回, 只不过本题的 ResultType 就是 List<String>.
 public class Solution {
     /**
@@ -76,5 +77,48 @@ public class Solution {
         }
 
         return res;
+    }
+}
+
+// version 2: traverse
+// 类似 246, init 一个全局的 res 和 path, traverse tree.
+public class Solution {
+    /**
+     * @param root: the root of the binary tree
+     * @return: all root-to-leaf paths
+     */
+    public List<String> binaryTreePaths(TreeNode root) {
+        // write your code here
+
+        List<String> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+
+        helper(root, path, res);
+
+        return res;
+    }
+
+    private void helper (TreeNode root, List<Integer> path, List<String> res){
+        if (root == null){
+            return;
+        }
+
+        path.add(root.val);
+
+        if (root.left == null && root.right == null){
+            String valid_path = "";
+            for (int val: path){
+                valid_path += val + "->";
+            }
+
+            valid_path = valid_path.substring(0, valid_path.length() - 2);
+            res.add(valid_path);
+        }
+
+        helper(root.left, path, res);
+        helper(root.right, path, res);
+        path.remove(path.size() - 1);
+
+        return;
     }
 }
