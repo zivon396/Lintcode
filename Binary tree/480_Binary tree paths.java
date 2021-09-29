@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// 本质上和 ResultType 是一样的 -> 都是 recursion 里初始化一个新的 res 并返回, 只不过本题的 ResultType 就是 List<String>.
 public class Solution {
     /**
      * @param root: the root of the binary tree
@@ -35,6 +35,46 @@ public class Solution {
         if (res.size() == 0){
             res.add("" + root.val);
         }
+        return res;
+    }
+}
+
+// helper 版
+public class Solution {
+    /**
+     * @param root: the root of the binary tree
+     * @return: all root-to-leaf paths
+     */
+    public List<String> binaryTreePaths(TreeNode root) {
+        // write your code here
+
+        List<String> res = helper(root);
+
+        return res;
+    }
+
+    private List<String> helper (TreeNode root){
+        if (root == null){
+            return new ArrayList<>();
+        }
+
+        List<String> left = helper(root.left);
+        List<String> right = helper(root.right);
+
+        List<String> res = new ArrayList<>();
+
+        for (String path: left){
+            res.add(root.val + "->" + path);
+        }
+
+        for (String path: right){
+            res.add(root.val + "->" + path);
+        }
+
+        if (res.size() == 0){
+            res.add("" + root.val);
+        }
+
         return res;
     }
 }
