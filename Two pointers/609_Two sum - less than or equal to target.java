@@ -1,3 +1,4 @@
+// 以 left 为基准点, 若 left + right <= target, 则 right 左边所有元素都满足.
 public class Solution {
     /**
      * @param nums: an array of integer
@@ -14,7 +15,7 @@ public class Solution {
         
         int left = 0, right = nums.length - 1;
         int count = 0;
-        while (left <= right){
+        while (left < right){
             if (nums[left] + nums[right] <= target){
                 count += right - left;
                 left++;
