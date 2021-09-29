@@ -47,6 +47,7 @@ public class Solution {
 }
 
 // version 2: traverse
+// 正如同 preorder traverse 一样:
 // 对于 right, lastNode 是 left 的最右边的 node
 // 对于 left, lastNode 是 root
 public class Solution {
