@@ -10,6 +10,9 @@
  * }
  */
 // version 1: traverse
+// 正如同 inorder traverse:
+// 对于 root, lastNode 是 left 的最右边的 node
+// 对于 right, lastNode 是 root
 public class Solution {
     /**
      * @param root: The root of binary tree.
