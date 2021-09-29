@@ -10,7 +10,7 @@
  * }
  */
 
-
+// init 一个全局的 res 和 path, traverse tree. 因为 valid_path 里的元素和层数 (level) 是一一对应的, 每往下 traverse 一层就以当前 level 为终点, 逆向 check.
 public class Solution {
     /*
      * @param root: the root of binary tree
