@@ -87,10 +87,12 @@ public class Solution {
      */
     public void sortIntegers2(int[] nums) {
         // write your code here
+        // 生成堆
         for (int i = nums.length / 2; i >= 0; i--){
             maxHeapify(nums, i, nums.length - 1);
         }
         
+        // 堆排序
         for (int i = nums.length - 1; i >= 0; i--){
             int tmp = nums[0];
             nums[0] = nums[i];
