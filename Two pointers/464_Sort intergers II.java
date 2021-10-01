@@ -38,6 +38,7 @@
     }
 
 // Merge sort
+// 额外 O(n) 存储空间
     public void mergeSort(int[] nums) {
         int[] tmp = new int[nums.length];
         mergeSort(nums, tmp, 0, nums.length - 1);
