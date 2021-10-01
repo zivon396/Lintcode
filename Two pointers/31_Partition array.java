@@ -1,3 +1,4 @@
+// 同 143, 注意 nums[right] >= k 要加等号
 public class Solution {
     /**
      * @param nums: The integer array you should partition
