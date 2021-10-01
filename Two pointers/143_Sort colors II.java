@@ -1,3 +1,4 @@
+// rainbow sort
 // 注意 nums[left] <= colorMid 要加等号, 不然 colorMid 值会被换到 right 右边.
 public class Solution {
     /**
