@@ -80,6 +80,7 @@
     }
 
 // Heap sort
+// 从小到大排序用大顶堆
 public class Solution {
     /**
      * @param A: an integer array
