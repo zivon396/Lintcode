@@ -1,45 +1,4 @@
-// version 1: 最牛逼的方法, 可以到O(n)
-public class Solution {
-    /**
-     * @param n: An integer
-     * @param nums: An array
-     * @return: the Kth largest element
-     */
-    public int kthLargestElement(int k, int[] nums) {
-        // write your code here
-        if (nums == null || nums.length == 0){
-            return 0;
-        }
-        
-        int res = partition(nums, 0, nums.length - 1, nums.length - k);
-        
-        return res;
-    }
-    
-    private int partition (int[] nums, int start, int end, int k){
-        int left = start, right = end;
-        int now = nums[left];
-        while (left < right) {
-            while (left < right && nums[right] >= now) {
-                right--;
-            }
-            nums[left] = nums[right];
-            while (left < right && nums[left] <= now) {
-                left++;
-            }
-            nums[right] = nums[left];
-        }
-        if (left == k) {
-            return now;
-        } else if (left < k) {
-            return partition(nums, left + 1, end, k);
-        } else {
-            return partition(nums, start, right - 1, k);
-        }
-    }
-}
-
-// version 2: pivot = mid
+// version 1: quick select (partition)
 public class Solution {
     /**
      * @param n: An integer
@@ -89,5 +48,46 @@ public class Solution {
             return partition(nums, left, end, k);
         }
         return nums[k];
+    }
+}
+
+// version 2:
+public class Solution {
+    /**
+     * @param n: An integer
+     * @param nums: An array
+     * @return: the Kth largest element
+     */
+    public int kthLargestElement(int k, int[] nums) {
+        // write your code here
+        if (nums == null || nums.length == 0){
+            return 0;
+        }
+        
+        int res = partition(nums, 0, nums.length - 1, nums.length - k);
+        
+        return res;
+    }
+    
+    private int partition (int[] nums, int start, int end, int k){
+        int left = start, right = end;
+        int now = nums[left];
+        while (left < right) {
+            while (left < right && nums[right] >= now) {
+                right--;
+            }
+            nums[left] = nums[right];
+            while (left < right && nums[left] <= now) {
+                left++;
+            }
+            nums[right] = nums[left];
+        }
+        if (left == k) {
+            return now;
+        } else if (left < k) {
+            return partition(nums, left + 1, end, k);
+        } else {
+            return partition(nums, start, right - 1, k);
+        }
     }
 }
