@@ -8,7 +8,9 @@
  *         this.next = null;
  *     }
  * }
- */ 
+ */
+// Create 一个 dummy, 最后直接返回 dummy.next
+// Heap 的 size 只需要是 k
 public class Solution {
     /**
      * @param lists: a list of ListNode
