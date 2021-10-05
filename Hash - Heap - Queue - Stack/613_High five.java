@@ -8,6 +8,7 @@
  *     }
  * }
  */
+// 注意 Map.Entry 的用法
 public class Solution {
     /**
      * @param results a list of <student_id, score>
