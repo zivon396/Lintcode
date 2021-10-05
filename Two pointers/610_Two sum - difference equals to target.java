@@ -15,6 +15,7 @@ public class Solution {
         
         for (int i = 0; i < nums.length; i++){
             if (hash.containsKey(nums[i])){
+                // 最新版本题目是返回 value 而不是 index
                 res[0] = hash.get(nums[i]) + 1;
                 res[1] = i + 1;
                 return res;
@@ -27,7 +28,8 @@ public class Solution {
     }
 }
 
-//version 2: Same direction two pointers
+// version 2: Same direction two pointers
+// 同向指针, while 条件 right < nums.length
 class Pair {
     public int index, val;
     public Pair (int index, int val){
