@@ -1,3 +1,4 @@
+// 因为要保持 heap, 所以需要用 iterator 来输出 res
 public class Solution {
     /*
     * @param k: An integer
