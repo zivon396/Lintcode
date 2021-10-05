@@ -1,3 +1,4 @@
+// 注意需要 Element class, 因为需要确定当前 heap poll 出来的元素在原 array 中的位置.
 class Element {
     public int row, col;
     public int val;
