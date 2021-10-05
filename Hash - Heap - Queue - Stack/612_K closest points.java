@@ -7,6 +7,7 @@
  *     Point(int a, int b) { x = a; y = b; }
  * }
  */
+// 此题要用大顶堆, 所以 Comparator 里要输出 -diff
 public class Solution {
     /**
      * @param points: a list of points
