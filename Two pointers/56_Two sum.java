@@ -1,5 +1,5 @@
 
-//version 1: Pair + two pointers
+// version 1: Pair + two pointers
 class Pair {
     public int index, val;
     public Pair (int index, int val){
@@ -47,7 +47,8 @@ public class Solution {
     }
 }
 
-//version 2: HashMap
+// version 2: HashMap
+// 理解思路, HashMap 的 key 是 target - nums[i], value 是 index, 边 initialize 边 check.
 public class Solution {
     /**
      * @param numbers: An array of Integer
