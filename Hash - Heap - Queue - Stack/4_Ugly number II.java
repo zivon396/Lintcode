@@ -1,3 +1,5 @@
+// Heap 版本时间复杂度为 O(nlogn)
+// DP 版本时间复杂度为 O(n)
 public class Solution {
     /**
      * @param n: An integer
