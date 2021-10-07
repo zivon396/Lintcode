@@ -1,4 +1,4 @@
-// Heap 版本时间复杂度为 O(nlogn)
+// Heap 版本: heap + set -> 时间复杂度为 O(nlogn)
 // DP 版本时间复杂度为 O(n)
 public class Solution {
     /**
