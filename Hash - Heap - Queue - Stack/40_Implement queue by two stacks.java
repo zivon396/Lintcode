@@ -1,58 +1,33 @@
-public class Stack {
-    /*
-     * @param x: An integer
-     * @return: nothing
-     */
-    private Queue<Integer> q1;
-    private Queue<Integer> q2;
-    
-    public Stack (){
-        this.q1 = new LinkedList<>();
-        this.q2 = new LinkedList<>();
-    }
-    
-    public void push(int x) {
-        // write your code here
-        q1.offer(x);
-    }
+public class MyQueue {
+    private Stack<Integer> stack1;
+    private Stack<Integer> stack2;
 
-    /*
-     * @return: nothing
-     */
-    public void pop() {
-        // write your code here
-        while (q1.size() != 1){
-            q2.offer(q1.poll());
+    public MyQueue() {
+       stack1 = new Stack<Integer>();
+       stack2 = new Stack<Integer>();
+    }
+    
+    private void stack2ToStack1(){
+        while(! stack2.isEmpty()){
+            stack1.push(stack2.pop());
         }
-        q1.poll();
-        swap();
     }
     
-    public void swap (){
-        Queue<Integer> tmp = q1;
-        q1 = q2;
-        q2 = tmp;
+    public void push(int element) {
+        stack2.push(element);
     }
 
-    /*
-     * @return: An integer
-     */
+    public int pop() {
+        if(stack1.empty() == true){
+            this.stack2ToStack1();
+        }
+        return stack1.pop();
+    }
+
     public int top() {
-        // write your code here
-        while (q1.size() != 1){
-            q2.offer(q1.poll());
+        if(stack1.empty() == true){
+            this.stack2ToStack1();
         }
-        int res = q1.poll();
-        q2.offer(res);
-        swap();
-        return res;
-    }
-
-    /*
-     * @return: True if the stack is empty
-     */
-    public boolean isEmpty() {
-        // write your code here
-        return q1.isEmpty();
+        return stack1.peek();
     }
 }
