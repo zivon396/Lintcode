@@ -1,3 +1,5 @@
+// stack 1 负责输出, stack 2 负责接收
+// 因为要实现的是 queue -> 最早进去的最早出, 后进去的可以后出, 所以可以等 stack 1 空了再把 stack 2 里的移过去
 public class MyQueue {
     private Stack<Integer> stack1;
     private Stack<Integer> stack2;
@@ -18,14 +20,14 @@ public class MyQueue {
     }
 
     public int pop() {
-        if(stack1.empty() == true){
+        if(stack1.isEmpty()){
             this.stack2ToStack1();
         }
         return stack1.pop();
     }
 
     public int top() {
-        if(stack1.empty() == true){
+        if(stack1.isEmpty()){
             this.stack2ToStack1();
         }
         return stack1.peek();
