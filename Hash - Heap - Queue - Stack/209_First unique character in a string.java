@@ -1,4 +1,6 @@
-// Data Stream (Map + set)
+// Data Stream (map + set)
+// map 用来 1)存储 pre node 2)判断第一次重复. 若重复则加到 set 里, 以后一律跳过
+// 不能只用 map, 否则多次重复时会发生错误
 class ListNode {
     public char val;
     public ListNode next;
