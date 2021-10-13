@@ -1,3 +1,5 @@
+// Map + list
+// remove 的时候用末尾的值来代替, 并移除末尾的值
 public class RandomizedSet {
     private Map<Integer, Integer> hash;
     private List<Integer> list;
