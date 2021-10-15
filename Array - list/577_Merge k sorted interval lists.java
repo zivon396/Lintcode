@@ -8,6 +8,7 @@
  *     }
  * }
  */
+// 基本就是 Merge k sorted arrays 的 interval 版
 class Element {
     public int row, col;
     public Interval interval;
