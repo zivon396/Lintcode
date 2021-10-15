@@ -8,7 +8,8 @@
  *     }
  * }
  */
-
+// last 是 merge 之后的, curt 是 merge 之前的
+// curt 永远取 start 小的那个
 public class Solution {
     /**
      * @param list1: one of the given list
