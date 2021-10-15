@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// 只需要一个 pre, 背过
 public class Solution {
     /**
      * @param head: n
