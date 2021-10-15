@@ -1,3 +1,4 @@
+// 注意用 count == 0 来判断是不是 heap 的第一个元素
 class Element {
     public int row, col;
     public int val;
