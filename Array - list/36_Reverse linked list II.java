@@ -9,7 +9,8 @@
  *     }
  * }
  */
-
+// 先找 nm 和 nn
+// 注意 nm 是 第 m 个的 pre (即第 m - 1 个)
 public class Solution {
     /**
      * @param head: ListNode head is the head of the linked list 
