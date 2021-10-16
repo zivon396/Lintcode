@@ -9,7 +9,9 @@
  *     }
  * }
  */
-
+// 每次翻转 k 个
+// 每次从下一组 k 个 node 的 pre 开始翻转 (每次返回这个 pre)
+// 翻转时, 先找到 nk, 然后保存一头一尾 (n1 和 nkPlus)
 public class Solution {
     /**
      * @param head: a ListNode
