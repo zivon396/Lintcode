@@ -9,7 +9,8 @@
  *     }
  * }
  */
-
+// Find size -> find kth -> rotate
+// 注意 k = k % size
 public class Solution {
     /**
      * @param head: the List
