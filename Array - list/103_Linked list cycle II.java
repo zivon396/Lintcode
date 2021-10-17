@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// fast 走的路程比 slow 走的路程多出来的部分, 与 slow 走的路程重合的部分, 是连结处到相遇处.
 public class Solution {
     /**
      * @param head: The first node of linked list.
