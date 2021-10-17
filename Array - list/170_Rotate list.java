@@ -11,6 +11,7 @@
  */
 // Find size -> find kth -> rotate
 // 注意 k = k % size
+// 也可用 174 的方法找到第 k 个节点
 public class Solution {
     /**
      * @param head: the List
