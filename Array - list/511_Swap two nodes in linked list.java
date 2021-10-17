@@ -9,7 +9,7 @@
  *     }
  * }
  */
-
+// 注意分 3 种情况: 1) n1 是 n2 前一个 2) n2 是 n1 前一个 3) n1 和 n2 不挨着
 public class Solution {
     /**
      * @param head: a ListNode
