@@ -6,6 +6,7 @@
  *     RandomListNode(int x) { this.label = x; }
  * };
  */
+// 和 137 (Clone graph) 的思路一致
 public class Solution {
     /**
      * @param head: The head of linked list with a random pointer.
