@@ -9,7 +9,8 @@
  *     }
  * }
  */
-
+// 先让 head 向后移动 n 个节点, 此时 head 距离末尾节点 (size - n - 1) 个节点, 再让 preDelete 和 head 同时向后移动, 即可找到倒数第 n 个的前一个节点
+// 也可用 170 的方法找节点
 public class Solution {
     /**
      * @param head: The first node of linked list.
