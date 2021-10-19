@@ -11,6 +11,7 @@
  */
 
 // version 1: quick sort / partition
+// 注意必须要有 midDummy 来存储 = mid.val 的节点 (以及多一个判断), 否则如果 mid.val 是最大值则会 stack overflow
 public class Solution {
     /**
      * @param head: The head of linked list.
