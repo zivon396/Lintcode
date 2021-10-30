@@ -1,3 +1,4 @@
+// 循环法写 find 背过
 public class Solution {
     /**
      * @param n: An integer
