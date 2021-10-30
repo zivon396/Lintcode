@@ -1,4 +1,4 @@
-//version 1
+// version 1: Array + DFS
 class TrieNode {
 
     public TrieNode[] children;
@@ -61,7 +61,7 @@ public class WordDictionary {
     }
 }
 
-//version 2:
+// version 2:
 class TrieNode {
     public TrieNode[] children = null;
     public boolean hasWord;
