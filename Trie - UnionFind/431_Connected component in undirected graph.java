@@ -1,4 +1,4 @@
-// 先把所有 node 放进 set 里, 再连结所有 neighbor, 最后 print
+// 先把题目所给的 List<UndirectedGraphNode> 转换为 Set<Integer> (用来初始化 UnionFind), 再连结所有 neighbor, 最后 print
 /**
  * Definition for Undirected graph.
  * class UndirectedGraphNode {
