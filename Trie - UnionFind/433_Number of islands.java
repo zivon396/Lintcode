@@ -1,3 +1,4 @@
+// 双循环遍历 matrix, 每个点都 connect 一下周围 4 个点
 class UnionFind {
     public int[] father = null;
     public int count;
