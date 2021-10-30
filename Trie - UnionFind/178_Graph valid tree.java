@@ -1,3 +1,5 @@
+// 若 edges.length != n - 1 直接返回 false
+// 若 edges.length = n - 1, 则要么 valid, 要么有环
 public class Solution {
     /**
      * @param n: An integer
@@ -18,7 +20,7 @@ public class Solution {
                 parent = father.get(parent);
             }
             
-            int fa = father.get(x);
+            int fa = x;
             while (fa != father.get(fa)){
                 int tmp = father.get(fa);
                 father.put(fa, parent);
