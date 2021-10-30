@@ -1,3 +1,5 @@
+// 需将边缘上的 0 连结到 n * m + 1
+// 因此 union 的时候需要有顺序, 将小的连结到大的上, 这样所有和边缘的 0 相邻的 0 的 father 都是 n * m + 1
 class UnionFind{
     
     int[] father;
