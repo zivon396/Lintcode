@@ -1,4 +1,5 @@
-//version 1: Heap
+// version 1: Heap
+// 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
 public class Solution {
     /**
      * @param nums: A list of integers
