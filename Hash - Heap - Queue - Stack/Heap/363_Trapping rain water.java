@@ -15,6 +15,7 @@ public class Solution {
         while(left < right) {
             if(leftheight < rightheight) {
                 left ++;
+                // 每次下降才存水
                 if(leftheight > heights[left]) {
                     res += (leftheight - heights[left]);
                 } else {
@@ -22,6 +23,7 @@ public class Solution {
                 }
             } else {
                 right --;
+                // 每次下降才存水
                 if(rightheight > heights[right]) {
                     res += (rightheight - heights[right]);
                 } else {
@@ -34,6 +36,8 @@ public class Solution {
 }
 
 // version 2: 单调栈
+// 栈中元素永远是不严格单调递减的
+// 若遇到升高的柱子, 则说明前面可能会存水, 依次 poll 出栈顶元素并记录水量
 public class Solution {
     /**
      * @param heights: a list of integers
@@ -47,6 +51,7 @@ public class Solution {
         for (int i = 0; i < heights.length; i++) {
             while (!queue.isEmpty() && heights[i] > heights[queue.peekLast()]) {
                 int j = queue.pollLast();
+                // 前面必须有堵足够高的墙挡着才行
                 if (!queue.isEmpty()) {
                     int w = i - queue.peekLast() - 1;
                     water += w * (Math.min(heights[i], heights[queue.peekLast()]) - heights[j]);
