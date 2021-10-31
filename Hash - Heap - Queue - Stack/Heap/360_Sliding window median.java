@@ -1,5 +1,6 @@
 // version 1: Heap
 // 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
+// add / remove 的时间复杂度为 log(k) (即维护两个 size 为 k / 2 的 heap)
 public class Solution {
     /**
      * @param nums: A list of integers
