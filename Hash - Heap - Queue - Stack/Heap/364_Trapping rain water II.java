@@ -65,6 +65,7 @@ public class Solution {
                 }
                 
                 visited[nx][ny] = true;
+                // 每次填入水之后, 相当于多出一个水柱
                 minheap.offer(new Cell(nx, ny, Math.max(cell.height, heights[nx][ny])));
                 water = water + Math.max(0, cell.height - heights[nx][ny]);
             }
