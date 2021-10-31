@@ -1,6 +1,7 @@
 // version 1: Heap
 // 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
-// add / remove 的时间复杂度为 log(k) (即维护两个 size 为 k / 2 的 heap)
+// add 的时间复杂度为 log(k) (即维护两个 size 为 k / 2 的 heap)
+// 注意传统 heap 无法保证 remove 的时间复杂度为 log(k)
 public class Solution {
     /**
      * @param nums: A list of integers
@@ -64,7 +65,8 @@ public class Solution {
 }
 
 
-//version 2: TreeSet
+// version 2: TreeSet
+// TreeSet 可保证 add / remove 的时间复杂度均为 log(k)
 import java.util.*;
 
 public class Solution {
