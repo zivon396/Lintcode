@@ -1,3 +1,5 @@
+// 时间复杂度 nmlog(m) + nlog(n) + klog(k)
+// 或者用 min heap, 逐个放入每个 num, 最后 pop peek.
 class Element {
     public int x, y;
     public int val;
