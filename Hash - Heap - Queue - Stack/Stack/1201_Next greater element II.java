@@ -1,4 +1,5 @@
 // 因为是循环数组, double 之后再遍历
+// 也可用 1206 的无 while 版本
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int n = nums.length, result[] = new int[n];
