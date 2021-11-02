@@ -1,3 +1,4 @@
+// 两个 stack, 一个正常, 另一个用于记录当前最小值, 保持两个 stack 同时 push 和 pop.
 public class MinStack {
     private Stack<Integer> stack;
     private Stack<Integer> min_stack;
