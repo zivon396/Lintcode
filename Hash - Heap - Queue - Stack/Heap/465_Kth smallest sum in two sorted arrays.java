@@ -1,3 +1,4 @@
+// 其实本质上是一个 A.length * B.length 的一个 matrix
 class Pair {
     public int x, y, sum;
     public Pair(int x, int y, int val) {
