@@ -1,3 +1,4 @@
+// 先初始化, 然后逐行计算以当前行为下边界时的 max rectangle (此时就变成了 122)
 public class Solution {
     /**
      * @param matrix a boolean 2D matrix
