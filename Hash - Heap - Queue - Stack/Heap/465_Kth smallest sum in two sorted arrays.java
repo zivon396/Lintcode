@@ -1,4 +1,4 @@
-// 其实本质上是一个 A.length * B.length 的一个 matrix
+// 其实本质上是一个 A.length * B.length 的一个 matrix -> 然后就变成了 401
 class Pair {
     public int x, y, sum;
     public Pair(int x, int y, int val) {
