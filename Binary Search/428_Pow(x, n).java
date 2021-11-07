@@ -21,6 +21,7 @@ public class Solution {
         double res = 1;
         double temp = x;
         
+        // while (m > 0)
         while (tail <= m){
             if ((m & 1) == 1){
                 res *= temp;
