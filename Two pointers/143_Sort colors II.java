@@ -30,6 +30,8 @@ public class Solution {
         int left = start, right = end;
         int colorMid = colorFrom + (colorTo - colorFrom) / 2;
         while (left <= right){
+            // 像这种互斥的写法 (<= 和 >), 能保证泾渭分明
+            // 而 (< 和 >) 有可能同一个数字在两边出现
             while (left <= right && nums[left] <= colorMid){
                 left++;
             }
