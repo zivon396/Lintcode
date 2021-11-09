@@ -13,6 +13,7 @@ public class Solution {
     }
     
     private int partition(int[] nums, int start, int end, int k) {
+        // 这里可以是 start == end (且此情况只会发生在 pivot 为最值的时候)
         if (start >= end) {
             return nums[k];
         }
