@@ -12,6 +12,7 @@ public class Solution {
         int len = s.length();
         int left = 0, right = len - 1;
         while (left < right){
+            // 此处不必加 left < right 的判断, 因为 left 加到最后一定会停在 right 处
             while (left < len && !isValid(s.charAt(left))){
                 left++;
             }
