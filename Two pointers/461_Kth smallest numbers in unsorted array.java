@@ -21,9 +21,11 @@ public class Solution {
         int pivot = nums[(start + end) / 2];
         
         while (left <= right) {
+            // 这里不能是 nums[left] <= pivot -> 如果 pivot 是最大值则会无限迭代
             while (left <= right && nums[left] < pivot) {
                 left++;
             }
+            // 这里不能是 nums[right] >= pivot -> 如果 pivot 是最小值则会无限迭代
             while (left <= right && nums[right] > pivot) {
                 right--;
             }
