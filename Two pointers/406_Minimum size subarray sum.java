@@ -1,4 +1,5 @@
 // 先右指针向右移动直到 sum >= s, 此时的 subarray 已经是以当前左指针开始的最小的, 故右移左指针直到 sum < s
+// Minimum -> Math.min() 放 while 里面
 public class Solution {
     /**
      * @param nums: an array of integers
