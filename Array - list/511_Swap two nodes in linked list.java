@@ -57,7 +57,7 @@ public class Solution {
             n2Node.next = n1Post;
         } else {
             n1Pre.next = n2Node;
-            n2Node.next = n1Node.next;
+            n2Node.next = n1Post;
             n2Pre.next = n1Node;
             n1Node.next = n2Post;
         }
