@@ -40,7 +40,7 @@ public class Solution {
         }
         return end;
     }
-    
+    // 因为是要找从左到右数第 k 个, 所以必须用 Leq.
     private int getNumLeq (int[][] nums, int target){
         int sum = 0;
         for (int i = 0; i < nums.length; i++){
