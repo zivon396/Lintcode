@@ -89,6 +89,7 @@ public class Solution {
 }
 
 // version 2: merge
+// merge sort 的精华就是一上来就直接对 left 和 right 进行 self call
 public class Solution {
     /**
      * @param head: The head of linked list.
