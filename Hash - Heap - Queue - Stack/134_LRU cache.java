@@ -138,16 +138,33 @@ public class LRUCache {
             hs.get(key).value = value;
             return;
         }
-
-        if (hs.size() == capacity) {
-            hs.remove(head.next.key);
-            head.next = head.next.next;
-            head.next.prev = head;
+        
+        if (hs.size() < capacity) {
+            Node insert = new Node(key, value);
+            hs.put(key, insert);
+            add_to_tail(insert);
+            return;
         }
 
-        Node insert = new Node(key, value);
-        hs.put(key, insert);
-        add_to_tail(insert);
+        Node first = head.next;
+        hs.remove(first.key);
+
+        first.key = key;
+        first.value = value;
+        hs.put(key, first);
+
+        move_to_tail(key);
+        
+// 这种虽然看着代码少, 但是浪费空间 -> 每次挪走 head.next 并没有回收
+//         if (hs.size() == capacity) {
+//             hs.remove(head.next.key);
+//             head.next = head.next.next;
+//             head.next.prev = head;
+//         }
+
+//         Node insert = new Node(key, value);
+//         hs.put(key, insert);
+//         add_to_tail(insert);
     }
 
     private void move_to_tail(int key) {
