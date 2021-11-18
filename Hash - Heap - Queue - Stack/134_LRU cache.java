@@ -116,17 +116,12 @@ public class LRUCache {
     }
 
     public int get(int key) {
-        if( !hs.containsKey(key)) {
+        if(!hs.containsKey(key)) {
             return -1;
         }
 
-        // remove current
-        Node current = hs.get(key);
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
-
         // move current to tail
-        move_to_tail(current);
+        move_to_tail(key);
 
         return hs.get(key).value;
     }
@@ -146,13 +141,25 @@ public class LRUCache {
 
         Node insert = new Node(key, value);
         hs.put(key, insert);
-        move_to_tail(insert);
+        add_to_tail(insert);
     }
 
-    private void move_to_tail(Node current) {
+    private void move_to_tail(int key) {
+        Node current = hs.get(key);
+        if (current == tail){
+            return;
+        }
+
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+
+        add_to_tail(current);
+    }
+
+    private void add_to_tail (Node current){
         current.prev = tail.prev;
+        current.next = tail;
         tail.prev = current;
         current.prev.next = current;
-        current.next = tail;
     }
 }
