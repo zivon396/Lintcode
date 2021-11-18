@@ -13,7 +13,7 @@ public class LRUCache {
     /*
     * @param capacity: An integer
     */
-    private int capacity, size;
+    private int capacity;
     private Map<Integer, ListNode> int2pre;
     private ListNode dummy, tail;
     
@@ -23,7 +23,6 @@ public class LRUCache {
         this.dummy = new ListNode(0, 0);
         this.tail = dummy;
         this.capacity = capacity;
-        this.size = 0;
     }
 
     /*
@@ -40,9 +39,16 @@ public class LRUCache {
         
         pre.next = pre.next.next;
         int2pre.put(pre.next.key, pre);
-        
+
+        add2tail(curt);
+    }
+
+    private void add2tail (ListNode curt){
+        int key = curt.key;
+
         tail.next = curt;
         int2pre.put(key, tail);
+        curt.next = null; // 最好有这个
         tail = curt;
     }
     
@@ -51,6 +57,7 @@ public class LRUCache {
         if (!int2pre.containsKey(key)){
             return -1;
         }
+
         move2tail(key);
         
         return tail.val;
@@ -69,21 +76,20 @@ public class LRUCache {
             return;
         }
         
-        if (size < capacity){
+        if (int2pre.size() < capacity){
             ListNode curt = new ListNode(key, value);
-            tail.next = curt;
-            int2pre.put(key, tail);
-            tail = curt;
-            size++;
+            add2tail(curt);
             return;
         }
-        
+
         ListNode first = dummy.next;
         int2pre.remove(first.key);
+
+        // 这样直接修改值能节省 ListNode 的开销
         first.key = key;
         first.val = value;
-        
         int2pre.put(key, dummy);
+
         move2tail(key);
     }
 }
