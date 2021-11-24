@@ -38,6 +38,8 @@ public class Solution {
 // version 2: 单调栈
 // 栈中元素永远是不严格单调递减的
 // 若遇到升高的柱子, 则说明前面可能会存水, 依次 poll 出栈顶元素并记录水量
+// 每次计算的是最新升高的柱子和 stack 倒数第二个柱子之间 (inclusive) 的存水量 -> 倒数第一个柱子的高度为底 + 两边的较小高度为顶.
+// 每次 poll 出一个柱子, 相当于用 min(最新高度, 此时的 peek) 填满 poll 出位置的缺口.
 public class Solution {
     /**
      * @param heights: a list of integers
