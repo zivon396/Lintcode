@@ -97,6 +97,7 @@ public class Solution {
     }
     
     void add(TreeSet<Node>minheap, TreeSet<Node> maxheap, int size, Node node) {
+        // add 的过程可以保证 median 一定是 maxHeap 的 peek
         if (maxheap.size() < size) {
             maxheap.add(node);
         }
