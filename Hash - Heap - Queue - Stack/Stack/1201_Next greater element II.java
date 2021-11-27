@@ -22,7 +22,9 @@ public class Solution {
                 res[stack.pop()] = num;
             }
             
-            if (i < n) stack.push(i);
+            if (i < n){
+                stack.push(i);
+            }
         }
         
         return res;
