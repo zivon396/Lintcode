@@ -1,4 +1,5 @@
 // O(n) Two pointers
+// 其实是 3 pointers: 从左到右枚举 right, 寻找 left_start 和 left_end
 public class Solution {
     /**
      * @param A:     An integer array
