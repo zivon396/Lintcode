@@ -1,5 +1,6 @@
 // O(n) Two pointers
 // 其实是 3 pointers: 从左到右枚举 right, 寻找 left_start 和 left_end
+// 随着 right 递增, left_start 和 left_end 也都是只增不减的, 所以时间复杂度为 O(n)
 public class Solution {
     /**
      * @param A:     An integer array
