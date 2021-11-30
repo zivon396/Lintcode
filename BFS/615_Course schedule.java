@@ -8,6 +8,7 @@ public class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         // write your code here
         int[] degrees = new int[numCourses];
+        // 初始化时使用 List<Integer>[] edges = new List<Integer>[numCourses]; 就不用在后面转换类型了
         List[] edges = new List[numCourses];
         
         for (int i = 0; i < numCourses; i++){
