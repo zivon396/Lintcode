@@ -36,7 +36,7 @@ public class Solution {
         }
         
         int count = 0;
-        int last = 0;
+        int last = 0; // 也可以让 last = -1, 这样就可以不用 count == 0 来判断是不是第一个元素了
         int size = nums.length;
         int sum = 0;
         while (!heap.isEmpty()){
