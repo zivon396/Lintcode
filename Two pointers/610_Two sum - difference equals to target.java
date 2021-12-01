@@ -30,6 +30,9 @@ public class Solution {
 
 // version 2: Same direction two pointers
 // 同向指针, while 条件 right < nums.length
+// 注意多了一个 if (left == right) right++;
+// 不能用相向指针，因为 right 和 left 往中间移 difference 都会变小 -> 本质就是找对方向, 使得移动 left 和 right 的结果变化是相反的
+// 因为 right 和 left 都是从左边来, 所以每次只用考虑它们右边的所有情况
 class Pair {
     public int index, val;
     public Pair (int index, int val){
