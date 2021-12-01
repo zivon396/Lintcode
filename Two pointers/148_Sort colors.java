@@ -1,3 +1,4 @@
+// p 和 right 交换不知道换过来的是什么, 而和 left 交换可以保证换过来的一定是 0 或 1 (因为 p 和 left 同向移动)
 public class Solution {
     /**
      * @param nums: A list of integer which is 0, 1 or 2 
