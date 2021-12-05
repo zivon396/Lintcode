@@ -27,6 +27,7 @@ public class Solution {
         return buckets.size();
     }
 
+    // Binary search, 找到 <= target 的个数 (或者说第一个 > target 的 position)
     private int binary_search(int target, List<Integer> buckets){
         int start = 0;
         int end = buckets.size() - 1;
