@@ -1,3 +1,4 @@
+// Deque 里存的是 index
 public class Solution {
     /**
      * @param nums: A list of integers.
