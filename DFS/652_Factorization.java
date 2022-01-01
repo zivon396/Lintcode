@@ -28,6 +28,8 @@ public class Solution {
         }
         
         for (int i = startIndex; i <= Math.sqrt(n); i++){
+            // 如果 i > sqrt(n), 则说明 n 已经不可能再分解出 >= i 的因子了 (因为 < i 的因子已经被遍历过了), 所以此时只需要加上 n 本身即可.
+            // e.g. [3, 4] n = 15
             if (n % i == 0){
                 com.add(i);
                 helper(n / i, com, i, res);
