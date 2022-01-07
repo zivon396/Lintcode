@@ -32,10 +32,6 @@ public class Solution {
         int start = 0;
         int end = buckets.size() - 1;
 
-        if (buckets.get(start) > target){
-            return start;
-        }
-
         while(start + 1 < end){
             int mid = start + (end - start) / 2;
             if(buckets.get(mid) > target){
@@ -46,10 +42,14 @@ public class Solution {
             }
         }
         
-        if (buckets.get(end) <= target){
-            return end + 1;
+        if (buckets.get(start) > target){
+            return start;
         }
 
-        return start + 1;
+        if (buckets.get(end) > target){
+            return end;
+        }
+
+        return end + 1;
     }
 }
