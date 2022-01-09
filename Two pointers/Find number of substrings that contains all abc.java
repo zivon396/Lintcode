@@ -1,5 +1,5 @@
-package microsoft;
-
+// version 1
+// l++
 public class FindNumOfValidSubstrings {
     // Time complexity O(N), where N is the length of given string
     public static int findNumOfValidSubstrings (String s){
@@ -40,11 +40,55 @@ public class FindNumOfValidSubstrings {
         return count;
     }
 
-    public static void main(String [] args) {
-        String s = "ababacb";
-        String[] strs = {null, "", "abc", "abcabc", "abac", "abacb", "aaabaca"};
-        int count = findNumOfValidSubstrings(strs[2]);
+//     public static void main(String [] args) {
+//         String s = "ababacb";
+//         String[] strs = {null, "", "abc", "abcabc", "abac", "abacb", "aaabaca"};
+//         int count = findNumOfValidSubstrings(strs[2]);
 
-        System.out.println(count);
+//         System.out.println(count);
+//     }
+}
+
+
+// version 2
+// r++
+package microsoft;
+
+public class FindNumOfValidSubstrings {
+    public static int findNumOfValidSubstrings (String s){
+        if (s == null || s.length() == 0){
+            return 0;
+        }
+        int[] freq = new int[3];
+        char[] chars = s.toCharArray();
+        int count = 0;
+
+        int size = s.length();
+        int NumOfUnique = 0;
+        for (int l = 0, r = 0; r < size; r++){
+            freq[chars[r] - 'a']++;
+            if (freq[chars[r] - 'a'] == 1){
+                NumOfUnique++;
+            }
+
+            while (NumOfUnique >= 3){
+                count += size - r;
+                freq[chars[l] - 'a']--;
+                if (freq[chars[l] - 'a'] == 0){
+                    NumOfUnique--;
+                }
+                l++;
+            }
+        }
+
+        return count;
     }
+
+//     public static void main(String [] args) {
+//         String s = "ababacb";
+//         String[] strs = {null, "", "abc", "abcabc", "abac", "abacb", "aaabaca"};
+//         int count = findNumOfValidSubstrings(strs[6]);
+
+//         System.out.println(count);
+//     }
 }
