@@ -1,5 +1,5 @@
 // 若 edges.length != n - 1 直接返回 false
-// 若 edges.length = n - 1, 则要么 valid, 要么有环
+// 若 edges.length = n - 1, 则要么 valid, 要么: 存在环且不连通
 public class Solution {
     /**
      * @param n: An integer
