@@ -45,12 +45,57 @@ public class Solution {
                     valid_path.add(path.get(j));
                 }
                 res.add(valid_path);
-                //不能加break
+                // 不能加break
             }
         }
         
         helper(root.left, path, target, level + 1, res);
         helper(root.right, path, target, level + 1, res);
+        path.remove(path.size() - 1);
+    }
+}
+
+// level 不是必要的
+public class Solution {
+    /*
+     * @param root: the root of binary tree
+     * @param target: An integer
+     * @return: all valid paths
+     */
+    public List<List<Integer>> binaryTreePathSum2(TreeNode root, int target) {
+        // write your code here
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        
+        helper(root, path, res, target);
+        
+        return res;
+    }
+    
+    private void helper (TreeNode root, 
+                         List<Integer> path, 
+                         List<List<Integer>> res, 
+                         int target){
+        if (root == null){
+            return;
+        }
+        
+        int tmp = target;
+        path.add(root.val);
+        for (int i = path.size() - 1; i >= 0; i--){
+            tmp -= path.get(i);
+            if (tmp == 0){
+                List<Integer> temp = new ArrayList<>();
+                for (int j = i; j <= path.size() - 1; j++){
+                    temp.add(path.get(j));
+                }
+                res.add(temp);
+                // 不能加break
+            }
+        }
+        
+        helper(root.left, path, res, target);
+        helper(root.right, path, res, target);
         path.remove(path.size() - 1);
     }
 }
