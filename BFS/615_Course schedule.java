@@ -73,7 +73,7 @@ public class Solution {
 
         visited[course] = true;;
         for (int i = 0; i < graph[course].size(); i++){
-            if(!dfs(graph,visited, (int) graph[course].get(i)))
+            if(!dfs(graph, visited, (int) graph[course].get(i)))
                 return false;
         }
         visited[course] = false;
