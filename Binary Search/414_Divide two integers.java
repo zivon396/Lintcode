@@ -40,7 +40,8 @@ public class Solution {
     }
 }
 
-// 下面方法也可以
+// 下面方法貌似更好, 因为不用重复向左移动 b -> b 只移动了一遍
+// 时间复杂度永远是 log(dividend/divisor)
 public class Solution {
     /**
      * @param dividend: the dividend
