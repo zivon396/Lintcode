@@ -39,3 +39,53 @@ public class Solution {
         return isNegative? -result : result;
     }
 }
+
+// 下面方法也可以
+public class Solution {
+    /**
+     * @param dividend: the dividend
+     * @param divisor: the divisor
+     * @return: the result
+     */
+    public int divide(int dividend, int divisor) {
+        if (divisor == 0){
+            return dividend >= 0? Integer.MAX_VALUE : Integer.MIN_VALUE;
+        }
+        if (dividend == 0){
+            return 0;
+        }
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
+        
+        boolean isNegative = (dividend < 0 && divisor > 0) || 
+                             (dividend > 0 && divisor < 0);
+        
+        long a = Math.abs((long)dividend);
+        long b = Math.abs((long)divisor);
+        if (a < b){
+            return 0;
+        }
+        int result = 0;
+
+        long shift = 1;
+        while (b <= a){
+            b <<= 1;
+            shift <<= 1;
+        }
+        b >>= 1;
+        shift >>= 1;
+
+        while (a > 0 && b > 0){
+            result += shift;
+            a -= b;
+            while (a < b){
+                b >>= 1;
+                shift >>= 1;
+            }
+        }
+
+        // System.out.println(result);
+        return isNegative? -result : result;
+    }
+}
