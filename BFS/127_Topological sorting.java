@@ -49,3 +49,42 @@ public class Solution {
         return res;
     }
 }
+
+// 更加精简版本
+public class Solution {
+    /*
+     * @param graph: A list of Directed graph node
+     * @return: Any topological order for the given graph.
+     */
+    public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
+        // write your code here
+        ArrayList<DirectedGraphNode> res = new ArrayList<>();
+        Map<DirectedGraphNode, Integer> degrees = new HashMap<>();
+
+        for (DirectedGraphNode node: graph){
+            for (DirectedGraphNode neighbor: node.neighbors){
+                degrees.put(neighbor, degrees.getOrDefault(neighbor, 0) + 1);
+            }
+        }
+
+        Queue<DirectedGraphNode> queue = new LinkedList<>();
+        for (DirectedGraphNode node: graph){
+            if (degrees.getOrDefault(node, 0) == 0){
+                queue.offer(node);
+            }
+        }
+
+        while (!queue.isEmpty()){
+            DirectedGraphNode current = queue.poll();
+            res.add(current);
+            for (DirectedGraphNode neighbor: current.neighbors){
+                degrees.put(neighbor, degrees.get(neighbor) - 1);
+                if (degrees.get(neighbor) == 0){
+                    queue.offer(neighbor);
+                }
+            }
+        }
+
+        return res;
+    }
+}
