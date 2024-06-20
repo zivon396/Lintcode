@@ -56,29 +56,26 @@ public class Solution {
     // 为什么 vals[index++] 最后不会溢出? (以 {3, 9, 20, #, #, 15, 7} 为例) -> while 循环里可以加一个条件 index < vals.length
     public TreeNode deserialize(String data) {
         // write your code here
+        TreeNode root = null;
         if (data == null || data.length() == 0){
-            return null;
+            return root;
         }
         
         String[] vals = data.split(",");
-        TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
+        root = new TreeNode(Integer.parseInt(vals[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         
         int index = 1;
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()){ // index 并不会越界
             TreeNode node = queue.poll();
             if (!vals[index++].equals("#")){
                 node.left = new TreeNode(Integer.parseInt(vals[index - 1]));
                 queue.offer(node.left);
-            } else {
-                node.left = null;
-            }
+            } // 不需要 else -> node.left = null;
             if (!vals[index++].equals("#")){
                 node.right = new TreeNode(Integer.parseInt(vals[index - 1]));
                 queue.offer(node.right);
-            } else {
-                node.right = null;
             }
         }
         
