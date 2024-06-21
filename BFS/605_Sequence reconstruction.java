@@ -12,7 +12,7 @@ public class Solution {
     public boolean sequenceReconstruction(int[] org, int[][] seqs) {
         // write your code here
         int n = org.length;
-        Map<Integer, Set<Integer>> edges = new HashMap<>();
+        Map<Integer, Set<Integer>> edges = new HashMap<>(); // 用
         int[] degrees = new int[n + 1];
         
         for (int num : org){
@@ -61,6 +61,70 @@ public class Solution {
             cnt++;
         }
         
+        return cnt == n;
+    }
+}
+
+// 数组edges版本
+public class Solution {
+    /**
+     * @param org: a permutation of the integers from 1 to n
+     * @param seqs: a list of sequences
+     * @return: true if it can be reconstructed only one or false
+     */
+    public boolean sequenceReconstruction(int[] org, int[][] seqs) {
+        // write your code here
+        int n = org.length;
+        int[] degrees = new int[n + 1];
+        List<Integer>[] edges = new List[n + 1];
+
+        for (int i = 0; i <= n; i++){
+            edges[i] = new ArrayList<>();
+        }
+
+        int count = 0;
+        for (int[] seq: seqs){
+            count += seq.length;
+            if (seq.length > 0 && (seq[seq.length - 1] < 1 || seq[seq.length - 1] > n)){
+                return false;
+            }
+
+            for (int i = 0; i < seq.length - 1; i++){
+                if (seq[i] < 1 || seq[i] > n){
+                    return false;
+                }
+                if (!edges[seq[i]].contains(seq[i + 1])){
+                    edges[seq[i]].add(seq[i + 1]);
+                    degrees[seq[i + 1]]++;
+                }
+            }
+        }
+        if (count < n){
+            return false;
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 1; i <= n; i++){
+            if (degrees[i] == 0){
+                queue.offer(i);
+            }
+        }
+
+        int cnt = 0;
+        while (queue.size() == 1){
+            int curt = queue.poll();
+            for (int i = 0; i < edges[curt].size(); i++){
+                degrees[edges[curt].get(i)]--;
+                if (degrees[edges[curt].get(i)] == 0){
+                    queue.offer(edges[curt].get(i));
+                }
+            }
+            if (curt != org[cnt]){
+                return false;
+            }
+            cnt++;
+        }
+
         return cnt == n;
     }
 }
