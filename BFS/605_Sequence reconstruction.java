@@ -1,7 +1,7 @@
 // 1) 一定要理解题意, queue.size() 必须始终为 1
-// 2) 最好用 HashMap 作为 edges 的数据结构, 不然 index 会引起歧义
+// 2) 最好用 HashMap 作为 edges 的数据结构, 不然 index 会引起歧义 (用数组也行)
 // 3) degrees 注意 initialize 的长度为 n + 1
-// 4) 注意一系列的 return false 的条件
+// 4) 注意一系列的 return false 的条件!!!
 // 5) 一个数的 edges 只需要 add 前一个, 不用 add 前面所有的
 public class Solution {
     /**
