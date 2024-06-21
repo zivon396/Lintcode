@@ -30,7 +30,7 @@ public class Solution {
                         set.add(next);
                         minLen = Math.min(minLen, next.length());
                     }
-                    index = str.indexOf(sub, index + 1);
+                    index = str.indexOf(sub, index + 1); // 注意这里必须是 + 1 不能是 + size
                 }
             }
         }
