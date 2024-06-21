@@ -35,6 +35,6 @@ public class Solution {
             }
         }
         
-        return minLen;
+        return minLen; // 必须有这个 minLen 来实时记录最小值, 不能直接 return str.length() -> 因为 degree 最大不代表字符最短!
     }
 }
