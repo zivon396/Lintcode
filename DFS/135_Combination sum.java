@@ -32,7 +32,7 @@ public class Solution {
         }
         
         for (int i = startIndex; i < candidates.length; i++){
-            if (i != startIndex && candidates[i] == candidates[i - 1]){
+            if (i != startIndex && candidates[i] == candidates[i - 1]){ // 对于本题来说, 这里 i = startIndex 其实不可能发生. 此处改为 i > 0 也可以.
                 continue;
             }
             com.add(candidates[i]);
