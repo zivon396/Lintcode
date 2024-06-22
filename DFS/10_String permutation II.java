@@ -1,4 +1,4 @@
-// 注意先把 String 转换为 chars[] 方便操作
+// 注意先把 String 转换为 chars[] 方便操作 -> 直接用 String 也可以
 // 直接用数组 boolean[] visited, 比用 set 往里加 index 好
 public class Solution {
     /**
