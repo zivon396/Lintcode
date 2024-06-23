@@ -44,6 +44,29 @@ public class Solution {
         
         return root;
     }
+    // 下面的也可以 (原创)
+    // private TreeNode helper(TreeNode root) {
+    //     if (root == null){
+    //         return root;
+    //     }
+
+    //     TreeNode left = helper(root.left);
+    //     TreeNode right = helper(root.right);
+    //     TreeNode last = root;
+
+    //     if (left != null){
+    //         left.right = root.right;
+    //         root.right = root.left;
+    //         root.left = null;
+    //         last = left;
+    //     }
+
+    //     if (right != null){
+    //         last = right;
+    //     }
+
+    //     return last;
+    // }
 }
 
 // version 2: traverse
