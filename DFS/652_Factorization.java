@@ -37,7 +37,7 @@ public class Solution {
             }
         }
         
-        if (!com.isEmpty()){
+        if (!com.isEmpty()){ // 不必再传入一个 n 来判断是否是其本身
             com.add(n);
             helper(1, com, startIndex, res);
             com.remove(com.size() - 1);
