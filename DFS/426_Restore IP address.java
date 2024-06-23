@@ -53,3 +53,51 @@ public class Solution {
         }
     }
 }
+
+// 这个版本更简洁 (自创)
+public class Solution {
+    /**
+     * @param s: the IP string
+     * @return: All possible valid IP addresses
+     */
+    public List<String> restoreIpAddresses(String s) {
+        // write your code here
+        List<String> res = new ArrayList<>();
+        if (s == null || s.length() == 0){
+            return res;
+        }
+        
+        List<String> com = new ArrayList<>();
+        helper(s, com, 0, res);
+        
+        return res;
+    }
+    
+    private void helper (String s,
+                         List<String> com,
+                         int startIndex,
+                         List<String> res){
+        if (startIndex == s.length()){
+            if (com.size() == 4){
+                res.add(String.join(".", com));
+            }
+
+            return;
+        }
+
+        for (int i = 0; i < 3 && startIndex + i < s.length(); i++){
+            String sub = s.substring(startIndex, startIndex + i + 1);
+
+            if (sub.charAt(0) == '0' && sub.length() > 1){
+                continue;
+            }
+
+            int num = Integer.parseInt(sub);
+            if (num < 256){
+                com.add(sub);
+                helper(s, com, startIndex + i + 1, res);
+                com.remove(com.size() - 1);
+            }
+        }
+    }
+}
