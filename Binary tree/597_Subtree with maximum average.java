@@ -54,3 +54,62 @@ public class Solution {
         return average;
     }
 }
+
+// Pure divConq
+class ResultType {
+    int sum;
+    int numOfNodes;
+    double maxAvg;
+    TreeNode node;
+    public ResultType(int sum, int numOfNodes, double maxAvg, TreeNode node) {
+        this.sum = sum;
+        this.numOfNodes = numOfNodes;
+        this.maxAvg = maxAvg;
+        this.node = node;
+    }
+}
+
+public class Solution {
+    /**
+     * @param root: the root of binary tree
+     * @return: the root of the maximum average of subtree
+     */
+    public TreeNode findSubtree2(TreeNode root) {
+        // write your code here
+        if (root == null){
+            return root;
+        }
+
+        ResultType res = helper(root);
+
+        return res.node;
+    }
+
+    private ResultType helper(TreeNode root) {
+        if (root == null){
+            return new ResultType(0, 0, Integer.MIN_VALUE, root);
+        }
+
+        ResultType left = helper(root.left);
+        ResultType right = helper(root.right);
+
+        ResultType res = new ResultType(
+            root.val + left.sum + right.sum,
+            left.numOfNodes + right.numOfNodes + 1,
+            (root.val + left.sum + right.sum) / (double) (left.numOfNodes + right.numOfNodes + 1),
+            root
+        );
+
+        if (left.maxAvg > res.maxAvg){
+            res.maxAvg = left.maxAvg;
+            res.node = left.node;
+        }
+
+        if (right.maxAvg > res.maxAvg){
+            res.maxAvg = right.maxAvg;
+            res.node = right.node;
+        }
+
+        return res;
+    }
+}
