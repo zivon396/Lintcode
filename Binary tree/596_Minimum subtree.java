@@ -44,6 +44,7 @@ public class Solution {
 }
 
 // version 2: pure divConq
+// 必须额外存储每棵子树的 sum!!!
 class ResultType {
     public TreeNode minSubtree;
     public int mini_sum, sum;
