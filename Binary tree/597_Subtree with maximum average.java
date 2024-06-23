@@ -10,6 +10,7 @@
  * }
  */
 // traverse + divConq
+// 等于把 node 和 maxAvg 放到全局去了
 class ResultType {
     public int sum;
     public int num;
