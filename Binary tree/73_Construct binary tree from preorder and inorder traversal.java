@@ -25,7 +25,7 @@ public class Solution {
     
     private TreeNode myBuildTree(int[] inorder, int instart, int inend,
                                  int[] preorder, int prestart, int preend){
-        if (instart > inend){
+        if (instart > inend){ // prestart > preend
             return null;
         }
         
