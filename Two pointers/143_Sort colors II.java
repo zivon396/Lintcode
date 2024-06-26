@@ -52,3 +52,53 @@ public class Solution {
         rainbowSort(nums, left, end, colorMid + 1, colorTo);
     }
 }
+
+// 直接排序也不是不行
+public class Solution {
+    /**
+     * @param colors: A list of integer
+     * @param k: An integer
+     * @return: nothing
+     */
+    public void sortColors2(int[] nums, int k) {
+        // write your code here
+        if (nums == null || nums.length == 0){
+            return;            
+        }
+        Arrays.sort(nums);
+
+        partition(nums, 0, nums.length - 1);
+    }
+
+    private void partition (int[] nums,
+                            int start,
+                            int end){
+        if (start >= end){
+            return;
+        }
+
+        int left = start, right = end;
+        int pivot = nums[start + (end - start) / 2];
+        while (left <= right){
+            while (left <= right && nums[left] < pivot){
+                left++;
+            }
+            while (left <= right && nums[right] > pivot){
+                right--;
+            }
+
+            swap(nums, left, right);
+            left++;
+            right--;
+        }
+
+        partition(nums, start, right);
+        partition(nums, left, end);
+    }
+
+    private void swap (int[] nums, int i, int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+}
