@@ -52,6 +52,7 @@ public class Solution {
 }
 
 // version 2:
+// 快速排序
 public class Solution {
     /**
      * @param n: An integer
