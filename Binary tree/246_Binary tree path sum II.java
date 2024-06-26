@@ -100,6 +100,55 @@ public class Solution {
     }
 }
 
+// 原创, 可以省去一个 temp
+public class Solution {
+    /**
+     * @param root: the root of binary tree
+     * @param target: An integer
+     * @return: all valid paths
+     *          we will sort your return value in output
+     */
+    public List<List<Integer>> binaryTreePathSum2(TreeNode root, int target) {
+        // write your code here
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null){
+            return res;
+        }
+
+        List<Integer> path = new ArrayList<>();
+        helper(root, target, path, res);
+
+        return res;
+    }
+
+    private void helper(TreeNode root,
+                        int target,
+                        List<Integer> path,
+                        List<List<Integer>> res) {
+        if (root == null){
+            return;
+        }
+
+        path.add(root.val);
+        List<Integer> level = new ArrayList<>();
+        int size = path.size();
+        int sum = 0;
+        for(int i = size - 1; i >= 0; i--) {
+            sum += path.get(i);
+            level.add(path.get(i));
+            if (sum == target){
+                Collections.reverse(level);
+                res.add(new ArrayList<>(level));
+                Collections.reverse(level);
+            }
+        }
+
+        helper(root.left, target, path, res);
+        helper(root.right, target, path, res);
+        path.remove(path.size() - 1);
+    }
+}
+
 
 // version 2
 public class Solution {
