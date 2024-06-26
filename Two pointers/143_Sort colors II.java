@@ -87,9 +87,11 @@ public class Solution {
                 right--;
             }
 
-            swap(nums, left, right);
-            left++;
-            right--;
+            if (left <= right){
+                swap(nums, left, right);
+                left++;
+                right--;
+            }
         }
 
         partition(nums, start, right);
