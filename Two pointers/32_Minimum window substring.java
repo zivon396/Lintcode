@@ -107,7 +107,6 @@ public class Solution {
             if (cntS[s[l]] == cntT[s[l]] - 1){
                 curt--;
             }
-            
         }
         
         if (left == -1){
