@@ -1,4 +1,5 @@
 // version 1: r++
+// 不能只用一个数组 + 用减到 0 的方式来判断 -> 会丢失信息
 public class Solution {
     /**
      * @param source : A string
