@@ -45,3 +45,40 @@ public class Solution {
         return res;
     }
 }
+
+// version 2 (原创)
+public class Solution {
+    /**
+     * @param results a list of <student_id, score>
+     * @return find the average of 5 highest scores for each person
+     * Map<Integer, Double> (student_id, average_score)
+     */
+    public Map<Integer, Double> highFive(Record[] results) {
+        // Write your code here
+        Map<Integer, Double> res = new HashMap<>();
+        Map<Integer, Queue> hash = new HashMap<>();
+
+        Queue<Integer> heap;
+        for (Record rec: results){
+            heap = hash.getOrDefault(rec.id, new PriorityQueue<Integer>(5));
+            heap.offer(rec.score);
+            if (heap.size() > 5){
+                heap.poll();
+            }
+
+            hash.put(rec.id, heap);
+        }
+
+        for (int key: hash.keySet()){
+            int sum = 0;
+            heap = hash.get(key);
+            while (!heap.isEmpty()){
+                sum += heap.poll();
+            }
+
+            res.put(key, sum / 5.0);
+        }
+
+        return res;
+    }
+}
