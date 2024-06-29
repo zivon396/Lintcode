@@ -1,3 +1,4 @@
+// 必须要不断从 set 里 remove 遍历过的数, 否则时间复杂度达不到 O(n)
 public class Solution {
     /**
      * @param num: A list of integers
