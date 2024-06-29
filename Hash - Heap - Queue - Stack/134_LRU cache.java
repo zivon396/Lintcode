@@ -92,7 +92,31 @@ public class LRUCache {
 
         move2tail(key);
     }
+
+    // 这样比较浪费开销
+    // public void set(int key, int value) {
+    //     // write your code here
+    //     if (get(key) != -1){
+    //         ListNode pre = int2pre.get(key);
+    //         pre.next.val = value;
+    //         return;
+    //     }
+
+    //     if (int2pre.size() == capacity){
+    //         ListNode first = dummy.next;
+    //         dummy.next = first.next;
+    //         if (first.next != null){
+    //             int2pre.put(first.next.key, dummy);
+    //         }
+    //         first.next = null;
+    //         int2pre.remove(first.key);
+    //     }
+
+    //     ListNode next = new ListNode(key, value);
+    //     add2tail(next);
+    // }
 }
+
 
 // vresion 2: Doubly linked list
 public class LRUCache {
