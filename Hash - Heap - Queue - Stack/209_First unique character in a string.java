@@ -42,7 +42,7 @@ class DataStream {
         } else {
             tail = pre;
         }
-        hash.remove(c);
+        hash.remove(c); // 也可以不 remove
         dupChars.add(c);
     }
     
