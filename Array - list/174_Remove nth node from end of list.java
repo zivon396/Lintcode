@@ -42,3 +42,37 @@ public class Solution {
         return dummy.next;
     }
 }
+
+// version 2:
+public class Solution {
+    /**
+     * @param head: The first node of linked list.
+     * @param n: An integer
+     * @return: The head of linked list.
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // write your code here
+        if (head == null || n < 0){
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+
+        ListNode slow = dummy, fast = dummy;
+        for (int i = 0; i < n; i++){
+            fast = fast.next;
+        }
+
+        while (fast.next != null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        ListNode n1 = slow.next;
+        slow.next = n1.next;
+        n1.next = null;
+
+        return dummy.next;
+    }
+}
