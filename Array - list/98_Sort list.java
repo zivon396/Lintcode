@@ -33,7 +33,7 @@ public class Solution {
             if (head.val < mid.val){
                 leftTail.next = head;
                 leftTail = leftTail.next;
-            } else if (head.val > mid. val){
+            } else if (head.val > mid.val){
                 rightTail.next = head;
                 rightTail = rightTail.next;
             } else {
