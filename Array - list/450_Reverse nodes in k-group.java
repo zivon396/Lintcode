@@ -62,3 +62,67 @@ public class Solution {
         return n1;
     }
 }
+
+// 原创版本
+public class Solution {
+    /**
+     * @param head: a ListNode
+     * @param k: An integer
+     * @return: a ListNode
+     */
+    public ListNode reverseKGroup(ListNode head, int k) {
+        // write your code here
+        if (k < 2){
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+
+        int count = 0;
+        ListNode nPre, nNext;
+        while (head != null){
+            nPre = head;
+            head = head.next;
+            count++;
+            while (count % k != 0 && head != null){
+                head = head.next;
+                count++;
+            }
+
+            if (head == null){
+                break;
+            }
+
+            nNext = head.next;
+            head.next = null;
+            head = reverse(nPre, nNext);
+        }
+
+        return dummy.next;
+    }
+
+    private ListNode reverse (ListNode nPre, ListNode nNext){
+        ListNode head = nPre.next;
+        nPre.next = null;
+        ListNode pre = null;
+
+        while (head != null){
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+
+        nPre.next = pre;
+        head = pre;
+        while (head.next != null){
+            head = head.next;
+        }
+
+        head.next = nNext;
+
+        return head;
+    }
+}
