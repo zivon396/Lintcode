@@ -33,6 +33,8 @@ public class Solution {
             head = head.next;
         }
         ListNode nlast = head;
+        // 也可以不用 nlast
+        // head.next = dummy.next
         
         k = k % size;
         if (k == 0){
