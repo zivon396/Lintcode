@@ -65,6 +65,7 @@ public class Solution {
 }
 
 //version 2: divide & conquer(每次移走1/2)
+// 时间复杂度比二分法要好, O(n) = c * log(k) (c 为常数)
 public class Solution {
     /*
      * @param A: An integer array
