@@ -63,3 +63,59 @@ public class Solution {
         return last;
     }
 }
+
+// 根本就不用 last
+public class Solution {
+    /**
+     * @param list1: one of the given list
+     * @param list2: another list
+     * @return: the new sorted list of interval
+     */
+    public List<Interval> mergeTwoInterval(List<Interval> list1, List<Interval> list2) {
+        // write your code here
+        List<Interval> res = new ArrayList<>();
+
+        int n = list1.size(), m = list2.size();
+        int i = 0, j = 0;
+        while (i < n && j < m){
+            if (list1.get(i).start < list2.get(j).start){
+                addRes(res, list1.get(i));
+                i++;
+            }
+            else {
+                addRes(res, list2.get(j));
+                j++;
+            }
+        }
+
+        while (i < n){
+            addRes(res, list1.get(i));
+            i++;
+        }
+        while (j < m){
+            addRes(res, list2.get(j));
+            j++;
+        }
+
+        return res;
+    }
+
+    private void addRes (List<Interval> res, Interval interval){
+        if (res.isEmpty()){
+            res.add(interval);
+        }
+
+        int end = interval.end;
+        Interval pre = res.get(res.size() - 1);
+        if (interval.start <= pre.end){
+            end = Math.max(end, pre.end);
+            res.set(res.size() - 1, new Interval(pre.start, end));
+            return;
+        }
+        else {
+            res.add(interval);
+        }
+
+        return;
+    }
+}
