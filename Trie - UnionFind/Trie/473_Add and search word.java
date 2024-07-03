@@ -1,4 +1,4 @@
-// 由于此题包含 ".", 因此 add 只能用 recursion
+// 由于此题包含 ".", 因此 find 只能用 recursion
 // version 1: Array + DFS
 class TrieNode {
 
