@@ -1,4 +1,5 @@
 // 先把题目所给的 List<UndirectedGraphNode> 转换为 Set<Integer> (用来初始化 UnionFind), 再连结所有 neighbor, 最后 print
+// 核心思路就是, 最终 father 的个数就是 component 的个数
 // 理论上也可以 connect 的时候就把两个点的 component 合并
 /**
  * Definition for Undirected graph.
