@@ -4,7 +4,7 @@ public class Solution {
      * @param divisor: the divisor
      * @return: the result
      */
-    // 本质上和 Pow(x, n) 是一样的, 都是把 n 分解为 2的幂的和. 不同之处在于 Pow(x, n)是从低到高(次幂)来找, 而本题是从高到低来找.
+    // 本质上和 Pow(x, n) 是一样的, 都是把 n 分解为 2 的幂的和. 不同之处在于 Pow(x, n) 是从低到高(次幂)来找, 而本题是从高到低来找.
     // Integer.MIN_VALUE 在取绝对值的时候会溢出，所以要用 long
     // 注意 dividend = Integer.MIN_VALUE, divisor = -1 的时候, 不断累加左移的 shift 最终会越界.
     // 时间复杂度: 最坏 (log(dividend/divisor))², 最好 log(dividend/divisor). 
@@ -40,7 +40,7 @@ public class Solution {
     }
 }
 
-// 下面方法貌似更好, 因为不用重复向左移动 b -> b 只移动了一遍
+// 下面方法貌似更好, 因为不用重复向左移动 b:  b 只移动了一遍
 // 时间复杂度永远是 log(dividend/divisor)
 public class Solution {
     /**
