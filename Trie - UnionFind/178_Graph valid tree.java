@@ -56,4 +56,21 @@ public class Solution {
         
         return true;
     }
+
+    // 这个也行
+    // public boolean validTree(int n, int[][] edges) {
+    //     // write your code here
+    //     UnionFind uf = new UnionFind(n);
+    //     int size = n;
+
+    //     for (int[] edge: edges){
+    //         if (uf.compressed_find(edge[0]) == uf.compressed_find(edge[1])){
+    //             return false;
+    //         }
+    //         uf.union(edge[0], edge[1]);
+    //         size--;
+    //     }
+
+    //     return size == 1;
+    // }
 }
