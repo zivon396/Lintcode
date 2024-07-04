@@ -60,10 +60,10 @@ public class Solution {
             }
         }
 
-        return print(hashSet, uf, nodes.size());
+        return print(hashSet, uf);
     }
     
-    public List<List<Integer> > print(HashSet<Integer> hashSet, UnionFind uf, int n) {
+    public List<List<Integer> > print(HashSet<Integer> hashSet, UnionFind uf) {
         List<List<Integer> > ans = new ArrayList<List<Integer> >();
         HashMap<Integer, List<Integer> > hashMap = new HashMap<Integer, List<Integer> >();
         
