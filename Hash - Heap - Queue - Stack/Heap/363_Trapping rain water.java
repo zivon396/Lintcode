@@ -35,6 +35,45 @@ public class Solution {
     }
 }
 
+// 原创
+public class Solution {
+    /**
+     * @param heights: a list of integers
+     * @return: a integer
+     */
+    public int trapRainWater(int[] heights) {
+        // write your code here
+        int left = 0, right = heights.length - 1;
+        int now = 0;
+        int sum = 0;
+        while (left < right){
+            if (heights[left] <= heights[right]){
+                now = left + 1;
+                int h = heights[left];
+                while (now < right && heights[now] < heights[left]){
+                    sum += h - heights[now];
+                    now++;
+                }
+
+                left = now;
+            }
+            else if (heights[left] > heights[right]){
+                now = right - 1;
+                int h = heights[right];
+                while (now > left && heights[now] < heights[right]){
+                    sum += h - heights[now];
+                    now--;
+                }
+
+                right = now;
+            }
+        }
+
+        return sum;
+    }
+}
+
+
 // version 2: 单调栈
 // 栈中元素永远是不严格单调递减的
 // 若遇到升高的柱子, 则说明前面可能会存水, 依次 poll 出栈顶元素并记录水量
