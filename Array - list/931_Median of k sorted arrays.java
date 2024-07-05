@@ -1,5 +1,6 @@
 // 基于二分法
-// 设共有 k 个数组, 数组平均长度为 n, 则时间复杂度为 O(log(Range)klog(n)), 其中 log(Range) 最大为32.
+// 设共有 n 个数组, 数组平均长度为 m, 则时间复杂度为 O(log(Range)nlog(m)), 其中 log(Range) 最大为32.
+// 时间复杂度与 k 无关
 public class Solution {
     /**
      * @param nums: the given k sorted arrays
