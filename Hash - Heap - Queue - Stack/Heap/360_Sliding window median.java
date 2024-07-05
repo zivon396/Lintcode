@@ -78,7 +78,7 @@ public class Solution {
      *            : A list of integers.
      * @return: The median of the element inside the window at each moving.
      */
-    public  ArrayList<Integer> medianSlidingWindow(int[] nums, int k) {
+    public ArrayList<Integer> medianSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         TreeSet<Node> minheap = new TreeSet<Node>();
         TreeSet<Node> maxheap = new TreeSet<Node>();
@@ -96,6 +96,7 @@ public class Solution {
             result.add(maxheap.last().val);
             remove(minheap, maxheap, new Node(i-k+1, nums[i-k+1]));
         }
+        
         return result;
     }
     
