@@ -1,3 +1,4 @@
+// 可以保证 heap 里的元素数量永远不多于 k 个
 class Pair {
     public int x, y;
     public int val;
