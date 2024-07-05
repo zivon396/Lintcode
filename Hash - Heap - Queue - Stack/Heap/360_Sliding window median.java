@@ -1,3 +1,5 @@
+// 两种答案现在都在 95% 的时候 fail 了
+
 // version 1: Heap
 // 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
 // !!!永远满足: maxHeap 里的所有元素都小于 minHeap 里的所有元素
