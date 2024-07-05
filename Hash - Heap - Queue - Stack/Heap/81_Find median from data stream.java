@@ -1,3 +1,4 @@
+// version 1
 public class Solution {
     PriorityQueue<Integer> minHeap, maxHeap;
     int median;
@@ -51,7 +52,7 @@ public class Solution {
 
 
 
-// 有待细看这是啥
+// version 2
 public class Solution {
     /**
      * @param nums: A list of integers
@@ -63,28 +64,19 @@ public class Solution {
         }
     };
     private int size = 0;
-    private Queue<Integer> minHeap, maxHeap;
-    
-    public int[] medianII(int[] nums) {
-        // write your code here
-        if (nums == null || nums.length == 0){
-            return new int[] {};
-        }
-        int len = nums.length;
-        int[] res = new int[len];
-        
-        minHeap = new PriorityQueue<>();
-        maxHeap = new PriorityQueue<>(heapCom);
-        
-        for (int i = 0; i < len; i++){
-            addNum(nums[i]);
-            res[i] = maxHeap.peek();
-        }
-        
-        return res;
+    private PriorityQueue<Integer> minHeap, maxHeap;
+
+    public Solution() {
+        this.minHeap = new PriorityQueue<>();
+        this.maxHeap = 
+            new PriorityQueue<>(new Comparator<Integer>() {
+            public int compare(Integer a, Integer b) {
+                return b - a;
+            }
+        });
     }
     
-    private void addNum (int num){
+    public void add (int num){
         if (size % 2 == 0){
             maxHeap.add(num);
         } else {
@@ -97,5 +89,10 @@ public class Solution {
             minHeap.add(maxPeek);
         }
         size++;
+    }
+
+    public int getMedian() {
+        // 返回目前维护的中位数
+        return this.maxHeap.peek();
     }
 }
