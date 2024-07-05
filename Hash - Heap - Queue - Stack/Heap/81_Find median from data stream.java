@@ -48,3 +48,54 @@ public class Solution {
         return this.median;
     }
 }
+
+
+
+// 有待细看这是啥
+public class Solution {
+    /**
+     * @param nums: A list of integers
+     * @return: the median of numbers
+     */
+    private Comparator<Integer> heapCom = new Comparator<Integer>(){
+        public int compare (Integer x, Integer y){
+            return y - x;
+        }
+    };
+    private int size = 0;
+    private Queue<Integer> minHeap, maxHeap;
+    
+    public int[] medianII(int[] nums) {
+        // write your code here
+        if (nums == null || nums.length == 0){
+            return new int[] {};
+        }
+        int len = nums.length;
+        int[] res = new int[len];
+        
+        minHeap = new PriorityQueue<>();
+        maxHeap = new PriorityQueue<>(heapCom);
+        
+        for (int i = 0; i < len; i++){
+            addNum(nums[i]);
+            res[i] = maxHeap.peek();
+        }
+        
+        return res;
+    }
+    
+    private void addNum (int num){
+        if (size % 2 == 0){
+            maxHeap.add(num);
+        } else {
+            minHeap.add(num);
+        }
+        if (minHeap.size() > 0 && maxHeap.peek() > minHeap.peek()){
+            Integer maxPeek = maxHeap.poll();
+            Integer minPeek = minHeap.poll();
+            maxHeap.add(minPeek);
+            minHeap.add(maxPeek);
+        }
+        size++;
+    }
+}
