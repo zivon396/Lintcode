@@ -1,4 +1,5 @@
 // 其实本质上是一个 A.length * B.length 的一个 matrix -> 然后就变成了 401
+// 时间复杂度 < klog(k) (因为 heap 的 size 不会大于 k)
 class Pair {
     public int x, y, sum;
     public Pair(int x, int y, int val) {
@@ -44,6 +45,7 @@ public class Solution {
                 }
             }
         }
+        
         return minHeap.peek().sum;
     }
 }
