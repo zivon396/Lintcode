@@ -34,8 +34,8 @@ public class Solution {
 
         // 比较堆中数字数量，调整堆和中位数
         if (this.maxHeap.size() > this.minHeap.size()) {
-                this.minHeap.add(this.median);
-                this.median = this.maxHeap.poll();
+            this.minHeap.add(this.median);
+            this.median = this.maxHeap.poll();
         }
         if (this.maxHeap.size() < this.minHeap.size() - 1) {
             this.maxHeap.add(this.median);
