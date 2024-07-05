@@ -1,5 +1,6 @@
 // version 1: Heap
 // 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
+// !!!永远满足: maxHeap 里的所有元素都小于 minHeap 里的所有元素
 // add 的时间复杂度为 log(k) (即维护两个 size 为 k / 2 的 heap)
 // 注意传统 heap 无法保证 remove 的时间复杂度为 log(k)
 public class Solution {
