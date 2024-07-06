@@ -10,6 +10,7 @@
  * }
  */
 // version 1: for + while
+// 和模板一样, 每次先 pop, 然后和 peek 比较
 public class Solution {
     /**
      * @param A: Given an integer array with no duplicates.
@@ -25,13 +26,17 @@ public class Solution {
             while (!stack.isEmpty() && node.val > stack.peek().val){
                 TreeNode son = stack.pop();
                 if (stack.isEmpty()){
+                    // 已知 son 的右边没有比 son 大的, stack 空说明 son 的左边也没有比 son 大的了, 因此 son 就是 node 左边最大的
                     node.left = son;
                     break;
                 }
+                
                 TreeNode left = stack.peek();
                 if (left.val < node.val){
+                    // 说明 peek 右边比 peek 大的只有 son 一个
                     left.right = son;
                 } else {
+                    // 说明 node 左边比 node 小的只有 son 一个
                     node.left = son;
                 }
             }
