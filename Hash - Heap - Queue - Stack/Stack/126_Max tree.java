@@ -70,6 +70,7 @@ public class Solution {
                     i--;
                     continue;
                 }
+                
                 TreeNode left = stack.peek();
                 if (left.val < node.val){
                     left.right = son;
