@@ -62,7 +62,8 @@ public class Solution {
             if (stack.isEmpty() || node.val <= stack.peek().val){
                 stack.push(node);
                 node = i >= A.length - 1 ? new TreeNode(Integer.MAX_VALUE) : new TreeNode(A[i+1]);
-            } else {
+            }
+            else {
                 TreeNode son = stack.pop();
                 if (stack.isEmpty()){
                     node.left = son;
@@ -78,6 +79,7 @@ public class Solution {
                 i--;
             }
         }
+        
         return stack.peek().left;
     }
 }
