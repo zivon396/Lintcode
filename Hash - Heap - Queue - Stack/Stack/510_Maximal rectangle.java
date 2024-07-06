@@ -1,4 +1,5 @@
 // 先初始化, 然后逐行计算以当前行为下边界时的 max rectangle (此时就变成了 122)
+// 为什么不用加 curt = -1 的情况???
 public class Solution {
     /**
      * @param matrix a boolean 2D matrix
@@ -13,7 +14,7 @@ public class Solution {
         int maxArea = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (! matrix[i][j]) {
+                if (!matrix[i][j]) {
                     height[i][j] = 0;
                 } else {
                     height[i][j] = i == 0 ? 1 : height[i - 1][j] + 1;
@@ -46,6 +47,7 @@ public class Solution {
                         * (stack.isEmpty() ? i : i - stack.peek() - 1));
             }
         }
+        
         return max;
     }
 }
