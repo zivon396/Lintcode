@@ -30,6 +30,7 @@ public class Solution {
         int i;
         double start, stop, mid;
         start = stop = A[0];
+        // 如果 A.length 很大的话, 这里不遍历更好, 否则时间复杂度要加上 O(n)
         for (i = 0; i < A.length; ++i) {
             start = Math.min(A[i], start);
             stop = Math.max(A[i], stop);
