@@ -1,3 +1,6 @@
+// 二分出 average 之后, 把数组中的每个数都减去 average, 然后的任务就是去求这个数组中, 是否有长度 >= k 的 subarray, 它的和超过 0
+// 后面一步用类似 41 的方法
+// 时间复杂度 N + N * log((Max - Min)/0.00001)
 public class Solution {
     /**
      * @param nums: an array with positive and negative numbers
@@ -30,7 +33,6 @@ public class Solution {
         int i;
         double start, stop, mid;
         start = stop = A[0];
-        // 如果 A.length 很大的话, 这里不遍历更好, 否则时间复杂度要加上 O(n)
         for (i = 0; i < A.length; ++i) {
             start = Math.min(A[i], start);
             stop = Math.max(A[i], stop);
