@@ -44,6 +44,10 @@ public class Solution {
                 stop = mid;
             }
         }
+
+        if (canFind(A, K, stop)){
+            return stop;
+        }
         
         return start;
     }
