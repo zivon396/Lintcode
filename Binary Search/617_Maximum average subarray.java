@@ -25,7 +25,11 @@ public class Solution {
                 minLeftSum = Math.min(minLeftSum, leftSum);
             }
         }
-        // 这里写成 41 的格式也是可以的
+        // Line 13-27: 写成 41 的格式也是可以的 (更直观)
+        // for (i = 0; i < K - 1; ++i) {
+        //     rightSum += A[i] - avg;
+        // }
+        
         // for (i = K - 1; i < A.length; ++i) {
         //     rightSum += A[i] - avg;
         //     if (rightSum - minLeftSum >= 0) {
