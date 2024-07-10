@@ -121,7 +121,7 @@ public class Solution {
         return 0;
     }
     
-    // find the first number > num
+    // find the first number >= num
     private int binarySearch(int[] minLast, int num) {
         int start = 0, end = minLast.length - 1;
         while (start + 1 < end) {
@@ -131,6 +131,10 @@ public class Solution {
             } else {
                 end = mid;
             }
+        }
+
+        if (minLast[start] >= num){
+            return start;
         }
         
         return end;
