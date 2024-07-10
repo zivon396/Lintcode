@@ -1,4 +1,4 @@
-// DP
+// DP: 滚动数组
 public class Solution {
     /**
      * @param n: An integer
