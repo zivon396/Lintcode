@@ -1,6 +1,7 @@
 // 接龙型动态规划，类似于 Longest Increasing Subsequence 的做法
 // 1) 需要记录具体方案 2) O(n^2) 的方法不能通过测试
 // 具体的优化在于找上一个接龙的数的时候，不是 for 循环所有比它小的数，而是直接 for 循环它的因子
+// 需要两个 map 来分别记录: 1) 最长路径 2) 最长路径对应的 prev
 public class Solution {
     /**
      * @param nums a set of distinct positive integers
