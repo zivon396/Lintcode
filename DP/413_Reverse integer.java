@@ -30,6 +30,7 @@ public class Solution {
 }
 
 // 九章答案
+// 把 *10 和 /10 放在同一个 while 里
 public class Solution {
     /**
      * @param n the integer to be reversed
