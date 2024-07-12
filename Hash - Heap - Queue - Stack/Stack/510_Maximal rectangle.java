@@ -1,5 +1,5 @@
 // 先初始化, 然后逐行计算以当前行为下边界时的 max rectangle (此时就变成了 122)
-// 为什么不用加 curt = -1 的情况???
+// 为什么不用加 curt = -1 的情况 => 因为初始化时每个 height 长度都是 n + 1, 最后一个值为0
 public class Solution {
     /**
      * @param matrix a boolean 2D matrix
