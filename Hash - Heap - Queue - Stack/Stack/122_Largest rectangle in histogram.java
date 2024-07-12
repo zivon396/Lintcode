@@ -17,7 +17,7 @@ public class Solution {
         Stack<Integer> stack = new Stack<Integer>();
         int max = 0;
         for (int i = 0; i <= height.length; i++) {
-            int curt = (i == height.length) ? -1 : height[i];
+            int curt = (i == height.length) ? -1 : height[i]; // (i == height.length) ? 0 也可以
             while (!stack.isEmpty() && curt < height[stack.peek()]) { // 这里也可是 curt <= height[stack.peek()]
                 int h = height[stack.pop()];
                 int w = stack.isEmpty() ? i : i - stack.peek() - 1; // i - (-1) - 1 就是 i
