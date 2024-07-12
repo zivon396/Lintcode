@@ -1,4 +1,6 @@
 // 记忆化搜索 + dp
+// 不用额外一个 flag[][], 判断 dp 的值就可以
+// 不会陷入循环, 因为有方向性
 public class Solution {
     /**
      * @param matrix: A 2D-array of integers
