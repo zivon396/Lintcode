@@ -11,7 +11,6 @@ public class Solution {
             dp[i][0] = i;
         }
         
-        
         for (int i = 1; i < n + 1; i++){
             for (int j = 1; j < m + 1; j++){
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)){
@@ -21,6 +20,7 @@ public class Solution {
                 }
             }
         }
+        
         return dp[n][m];
     }
 }
