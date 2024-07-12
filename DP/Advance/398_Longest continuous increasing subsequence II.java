@@ -5,11 +5,10 @@ public class Solution {
      * @return: an integer
      */
     private int[][] dp;
-    private int[][] flag;
     private int m, n;
     
     private int[] dx = {1, 0, -1, 0};
-    private int[] dy = {0, 1, 0, -1
+    private int[] dy = {0, 1, 0, -1};
     public int longestContinuousIncreasingSubsequence2(int[][] matrix) {
         // write your code here
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0){
@@ -20,7 +19,6 @@ public class Solution {
         n = matrix.length;
         m = matrix[0].length;
         dp = new int[n][m];
-        flag = new int[n][m];
         
         for (int i = 0; i < n; i++){
             for (int j = 0; j < m; j++){
@@ -32,7 +30,7 @@ public class Solution {
     }
     
     private int search (int x, int y, int[][] matrix){
-        if (flag[x][y] == 1){
+        if (dp[x][y] > 0){
             return dp[x][y];
         }
         
@@ -47,7 +45,6 @@ public class Solution {
             }
         }
         
-        flag[x][y] = 1;
         dp[x][y] = res;
         
         return res;
