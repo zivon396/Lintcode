@@ -44,6 +44,7 @@ public class Solution {
 // Binary Search
 // 先将信封在第一个维度上排序, 然后在第二个维度上做 Longest increasing subsequence
 // 注意: comparator 的第二个维度必须反着排, 因为第一个维度相同的话是不能嵌套的
+// 时间复杂度 nlog(n)
 public class Solution {
     /**
      * @param envelopes: a number of envelopes with widths and heights
