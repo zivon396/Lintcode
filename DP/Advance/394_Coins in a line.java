@@ -1,3 +1,4 @@
+// dp[i] => 现在还剩 i 个硬币, 当前取硬币的人最后的输赢状况
 public class Solution {
     /**
      * @param n: An integer
@@ -14,6 +15,10 @@ public class Solution {
         for (int i = 2; i < n + 1; i++) {
             dp[i % 2] = !(dp[(i - 1) % 2] && dp[(i - 2) % 2]);
         }
+        
         return dp[n % 2];
     }
 }
+
+// dp[i] => 现在还剩 i 个硬币, 现在先手取硬币的人最后的输赢状况
+// dp[i] = (dp[i - 2] && dp[i - 3]) || (dp[i - 3] && dp[i - 4])
