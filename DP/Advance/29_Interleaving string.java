@@ -1,4 +1,4 @@
-// dp[i] 代表由 s1 的前 i 个字母和 s2 的前 j 个字母是否能构成当前 i+j 个字母
+// dp[i][j] 代表由 s1 的前 i 个字母和 s2 的前 j 个字母是否能构成当前 i+j 个字母
 public class Solution {
     /**
      * @param s1: A string
