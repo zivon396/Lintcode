@@ -1,3 +1,6 @@
+// 若 s[i-1] == t[j-1]:
+// 1) 用上 s[i-1]: 共有 dp[i-1][j-1] 种
+// 2) 不用上 s[i-1]: 共有 dp[i-1][j] 种
 public class Solution {
     /*
      * @param : A string
