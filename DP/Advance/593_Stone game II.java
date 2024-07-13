@@ -28,8 +28,8 @@ public class Solution {
                 int j = i + len - 1;
                 dp[i][j] = Integer.MAX_VALUE;
                 for (int k = i; k < j; ++k) {
-                    if (dp[i][k] + dp[k+1][j] + sum[j + 1] - sum[i] < dp[i][j])
-                        dp[i][j] = dp[i][k] + dp[k+1][j] + sum[j + 1] - sum[i];
+                    if (dp[i][k] + dp[k + 1][j] + sum[j + 1] - sum[i] < dp[i][j])
+                        dp[i][j] = dp[i][k] + dp[k + 1][j] + sum[j + 1] - sum[i];
                 }
         }
 
@@ -37,8 +37,8 @@ public class Solution {
         for (int i = 0; i < n; ++i)
             if (dp[i][i + n - 1] < ans)
                 ans = dp[i][i + n - 1];
-        return ans;
         
+        return ans;
     }
 }
 
