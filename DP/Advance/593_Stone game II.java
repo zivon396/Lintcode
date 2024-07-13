@@ -1,5 +1,5 @@
 // Double
-// 最外层 for 循环 len 可以替代记忆化搜索
+// 由小到大
 public class Solution {
     /**
      * @param A: An integer array
