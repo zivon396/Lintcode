@@ -1,4 +1,4 @@
-// f[i][j] => 前 i 个物品选一些组成容量为 j 的最大价值
+// f[i][j] => 前 i 个物品选一些放入容量为 j 的背包所组成的最大价值
 public class Solution {
     /**
      * @param m: An integer m denotes the size of a backpack
