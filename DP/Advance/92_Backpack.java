@@ -50,6 +50,7 @@ public class Solution {
         
         for (int i = 0; i < n; i++) {
             // 滚动数组优化 倒序枚举j
+            // 因为计算结果是根据前面的数据来的，如果从前面开始计算，新的计算结果会把上一轮的计算结果覆盖掉，计算结果就不对了
             for (int j = m; j >= A[i]; j--) {
                 dp[j] = Integer.max(dp[j], dp[j - A[i]] + A[i]);
             }
