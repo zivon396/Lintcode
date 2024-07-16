@@ -48,7 +48,7 @@ class Solution {
             return find(x1, mid1 - 1, y1, mid2 - 1, A);
         }
         
-        if (x >= 1 && x < mid1 && y > mid2 && y <= y2) {
+        if (x >= x1 && x < mid1 && y > mid2 && y <= y2) {
             return find(x1, mid1 - 1, mid2 + 1, y2, A);
         }
         
