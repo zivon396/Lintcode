@@ -1,7 +1,6 @@
 // 注意 insert 的时候每个途经的 node 都要 + sum
 // old key 有新 value 的时候, insert (val - old)
 class MapSum {
-
     public class TrieNode {
         public TrieNode[] son = new TrieNode[26];
         public int sum = 0;
@@ -29,9 +28,9 @@ class MapSum {
                 if(cur.son[sid] == null) return 0;
                 cur = cur.son[sid];
             }
+            
             return cur.sum;
         }
-        
     }
     
     public Trie trie;
@@ -94,6 +93,7 @@ class TrieNode {
         if (children[pos] == null){
             return null;
         }
+        
         return children[pos].find(word, index + 1);
     }
     
