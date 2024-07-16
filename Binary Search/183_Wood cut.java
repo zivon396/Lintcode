@@ -1,35 +1,49 @@
+// 猜数字
 public class Solution {
     /**
-     * @param L: Given n pieces of wood with length L[i]
+     * @param l: Given n pieces of wood with length L[i]
      * @param k: An integer
      * @return: The maximum length of the small pieces
      */
-    public int woodCut(int[] L, int k) {
+    public int woodCut(int[] l, int k) {
         // write your code here
-        int l = 1, res = 0;
-        int r = 0;
-        for (int item : L) {
-            r = Math.max(r, item);
+        if (l == null || l.length == 0){
+            return 0;
         }
-        
-        while (l <= r) {
-            int mid = l + (r - l) / 2; // (l + r) / 2 may overflow
-            if (count(L, mid) >= k) {
-                res = mid;
-                l = mid + 1;
-            } else {
-                r = mid - 1;
+        int max = 0;
+        for (int i = 0; i < l.length; i++){
+            max = Math.max(max, l[i]);
+        }
+
+        int start = 1, end = max;
+        while (start + 1 < end){
+            int mid = start + (end - start) / 2;
+            System.out.println(mid);
+            if (getNum(mid, l) < k){
+                end = mid;
+            }
+            else {
+                start = mid;
             }
         }
-        
-        return res;
-    }
-    
-    private int count(int[] L, int len) {
-        int sum = 0;
-        for (int item : L) {
-            sum += item / len;
+
+        if (getNum(end, l) >= k){
+            return end;
         }
-        return sum;
+
+        if (getNum(start, l) >= k){
+            return start;
+        }
+
+        return 0;
+    }
+
+    private int getNum (int num, int[] l){
+        int count = 0;
+        for (int i = 0; i < l.length; i++){
+            count += l[i] / num;
+        }
+
+        return count;
     }
 }
