@@ -1,3 +1,5 @@
+// 每次迭代找到行/列最中间的位置, 并找到当前十字中的最大值, 留下四分之一
+// 每次用 O(n + m) 的时间把问题转化为 O((n + m) / 2) 的问题, 时间复杂度 O(n + m)
 class Solution {
     /**
      * @param A: An integer matrix
