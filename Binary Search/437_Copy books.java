@@ -20,6 +20,7 @@ public class Solution {
         if (check(pages, l, k)) {
             return l;
         }
+        
         return r;
     }
     
@@ -36,6 +37,7 @@ public class Solution {
             }
             left -= item;
         }
+        
         return num <= k;
     }
 }
