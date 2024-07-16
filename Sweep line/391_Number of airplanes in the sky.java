@@ -24,7 +24,10 @@ class Solution {
      * @param intervals: An interval array
      * @return: Count of airplanes are in the sky.
      */
-    public int countOfAirplanes(List<Interval> airplanes) { 
+    public int countOfAirplanes(List<Interval> airplanes) {
+        if (airplanes == null || airplanes.size() == 0){
+            return 0;
+        }
         List<Point> list = new ArrayList<>(airplanes.size() * 2);
         for (Interval i : airplanes) {
             list.add(new Point(i.start, 1));
