@@ -1,3 +1,5 @@
+// 答案的范围在 max(pages) ~ sum(pages) 之间
+// 每次二分到一个时间 time_limit 的时候, 用贪心法从左到右扫描一下 pages, 看看需要多少个人来完成抄袭
 public class Solution {
     /**
      * @param pages: an array of integers
