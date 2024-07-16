@@ -1,3 +1,4 @@
+// 以给定点和边界为 range, 分别查找上、下、左、右边缘
 public class Solution {
     /**
      * @param image a binary matrix with '0' and '1'
