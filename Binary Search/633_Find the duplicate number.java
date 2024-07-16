@@ -1,3 +1,4 @@
+// 1 ~ n 之间猜数, 每次统计数组中 <= 的个数
 public class Solution {
     /**
      * @param nums: an array containing n + 1 integers which is between 1 and n
@@ -20,6 +21,7 @@ public class Solution {
         if (count(nums, l) > l) {
             return l;
         }
+        
         return r;
     }
     
@@ -30,6 +32,7 @@ public class Solution {
                 cnt++;
             }
         }
+        
         return cnt;
     }
 }
