@@ -43,3 +43,49 @@ public class Solution {
         return ans;
     }
 }
+
+// version 2:
+public class Solution {
+    /**
+     * @param intervals: an array of meeting time intervals
+     * @return: the minimum number of conference rooms required
+     */
+    static class Node {
+        public int time;
+        public int cost;
+
+        // 时间，开始时间cost为1，结束时间cost为-1
+        public Node(int time, int cost) {
+            this.time = time;
+            this.cost = cost;
+        }
+    }
+    //先按照时间升序，再按照cost升序排序
+    static Comparator<Node> cNode = new Comparator<Node>() {
+        public int compare(Node o1, Node o2) {
+            if (o1.time != o2.time) {
+                return o1.time - o2.time;
+            }
+            return o1.cost - o2.cost;
+        }
+    };
+
+    public int minMeetingRooms(List<Interval> intervals) {
+        //扫描线数组
+        List<Node>room = new ArrayList<Node>();
+        for(int i = 0; i < intervals.size(); i++) {
+            room.add(new Node(intervals.get(i).start, 1));
+            room.add(new Node(intervals.get(i).end, -1));
+        }
+        //排序
+        Collections.sort(room, cNode);
+        int ans = 0;
+        int tmp = 0;
+        for (int i = 0; i < room.size(); i++) {
+            tmp += room.get(i).cost;
+            ans = Math.max(ans, tmp);
+        }
+
+        return ans;
+    }
+}
