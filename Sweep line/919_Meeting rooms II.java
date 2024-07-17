@@ -72,7 +72,7 @@ public class Solution {
 
     public int minMeetingRooms(List<Interval> intervals) {
         //扫描线数组
-        List<Node>room = new ArrayList<Node>();
+        List<Node> room = new ArrayList<Node>();
         for(int i = 0; i < intervals.size(); i++) {
             room.add(new Node(intervals.get(i).start, 1));
             room.add(new Node(intervals.get(i).end, -1));
