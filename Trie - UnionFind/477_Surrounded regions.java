@@ -82,7 +82,7 @@ public class Solution {
     static final char FREE = 'F';
     static final char TRAVELED = 'T';
 
-    public void solve(char[][] board) {
+    public void surroundedRegions(char[][] board) {
         if (board.length == 0) {
             return;
         }
