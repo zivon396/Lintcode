@@ -75,6 +75,7 @@ public class Solution {
         }
 
         boolean[] used = new boolean[n + 1];
+        // 总共 n 次, 每次找到最小的 dist, 用对应的节点来更新 dist[]
         for (int i = 1; i <= n; ++i) {
             int next = -1;
             for (int neighbor = 1; neighbor <= n; ++neighbor) {
