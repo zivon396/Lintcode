@@ -48,3 +48,48 @@ public class Solution {
     }
 }
 // One test data: [[1,2,2],[2,1,2],[1,3,5],[3,1,5],[2,3,2],[3,2,2],[2,4,6],[4,2,6],[4,7,7],[7,4,7],[3,5,4],[5,3,4],[3,6,1],[6,3,1],[5,7,3],[7,5,3],[6,7,8],[7,6,8]]
+
+
+// 不使用 Queue, 双循环
+// 时间复杂度 O(n^2 + m) m => times 的长度
+// 空间复杂度 O(n^2)
+public class Solution {
+    /**
+     * @param times: a 2D array
+     * @param n: an integer
+     * @param k: an integer
+     * @return: how long will it take for all nodes to receive the signal
+     */
+    public int networkDelayTime(int[][] times, int n, int k) {
+        // Write your code here
+        final int INF = Integer.MAX_VALUE / 2;
+        int[] dist = new int[n + 1];
+        int[][] edges = new int[n + 1][n + 1];
+        Arrays.fill(dist, INF);
+        dist[k] = 0;
+        for (int i = 1; i <= n; i++){
+            Arrays.fill(edges[i], INF);
+        }
+        for (int[] time: times){
+            edges[time[0]][time[1]] = time[2];
+        }
+
+        boolean[] used = new boolean[n + 1];
+        for (int i = 1; i <= n; ++i) {
+            int next = -1;
+            for (int neighbor = 1; neighbor <= n; ++neighbor) {
+                if (!used[neighbor] && (next == -1 || dist[neighbor] < dist[next])) {
+                    next = neighbor;
+                }
+            }
+            used[next] = true;
+            for (int neighbor = 1; neighbor <= n; ++neighbor) {
+                dist[neighbor] = Math.min(dist[neighbor], dist[next] + edges[next][neighbor]);
+            }
+        }
+        dist[0] = 0;
+
+        int ans = Arrays.stream(dist).max().getAsInt();
+        return ans == INF ? -1 : ans;
+    }
+}
