@@ -102,3 +102,47 @@ public class Solution {
         return ans == INF ? -1 : ans;
     }
 }
+
+
+// 利用小顶堆
+// 同一个节点有可能重复入 Queue
+// 时间复杂度 O(mlog(m))
+// 空间复杂度 O(n + m)
+// 值得注意的是, 由于本题边数远大于点数, 是一张稠密图, 因此在运行时间上, 枚举写法要略快于堆的写法
+public class Solution {
+    public int networkDelayTime(int[][] times, int n, int k) {
+        final int INF = Integer.MAX_VALUE / 2;
+        List<int[]>[] g = new List[n + 1];
+        for (int i = 0; i <= n; ++i) {
+            g[i] = new ArrayList<int[]>();
+        }
+        for (int[] t : times) {
+            int x = t[0], y = t[1];
+            g[x].add(new int[]{y, t[2]});
+        }
+
+        int[] dist = new int[n + 1];
+        Arrays.fill(dist, INF);
+        dist[k] = 0;
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>((a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] - b[1]);
+        pq.offer(new int[]{0, k});
+        while (!pq.isEmpty()) {
+            int[] p = pq.poll();
+            int time = p[0], x = p[1];
+            if (dist[x] < time) { // 这里的判断是检查当前节点的 dist 有没有被再次更新过, 如果有, 那么这个 {time, x} 就是过时的了
+                continue;
+            }
+            for (int[] e : g[x]) {
+                int y = e[0], d = dist[x] + e[1];
+                if (d < dist[y]) {
+                    dist[y] = d;
+                    pq.offer(new int[]{d, y});
+                }
+            }
+        }
+        dist[0] = 0;
+
+        int ans = Arrays.stream(dist).max().getAsInt();
+        return ans == INF ? -1 : ans;
+    }
+}
