@@ -3,7 +3,7 @@
 
 // 使用 Queue, 并不是严格的 Dijkestra
 // 并没有每次找到最小的并且加入到 visited 里, 但也能行得通
-// 此算法保证了不会进入死循环 (无限加入 Queue)
+// 此算法保证了不会进入死循环 (无限加入 Queue), 但同一个节点有可能重复入 Queue
 // 时间复杂度 O(n^2 + m)  m => times 的长度
 // 空间复杂度 O(n^2)
 public class Solution {
