@@ -58,7 +58,7 @@ public class Solution {
 
 
 // 严格 Dijkestra 算法
-// 不使用 Queue, 双循环
+// 不使用 Queue, 双循环 (本质上 used[] 代替了 Queue 的作用)
 // 时间复杂度 O(n^2 + m)  m => times 的长度
 // 空间复杂度 O(n^2)
 public class Solution {
