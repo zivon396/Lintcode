@@ -1,4 +1,11 @@
 // Dijkestra 算法
+
+
+// 使用 Queue, 并不是严格的 Dijkestra
+// 并没有每次找到最小的并且加入到 visited 里, 但也能行得通
+// 此算法保证了不会进入死循环 (无限加入 Queue)
+// 时间复杂度 O(n^2 + m)  m => times 的长度
+// 空间复杂度 O(n^2)
 public class Solution {
     /**
      * @param times: a 2D array
@@ -50,8 +57,9 @@ public class Solution {
 // One test data: [[1,2,2],[2,1,2],[1,3,5],[3,1,5],[2,3,2],[3,2,2],[2,4,6],[4,2,6],[4,7,7],[7,4,7],[3,5,4],[5,3,4],[3,6,1],[6,3,1],[5,7,3],[7,5,3],[6,7,8],[7,6,8]]
 
 
+// 严格 Dijkestra 算法
 // 不使用 Queue, 双循环
-// 时间复杂度 O(n^2 + m) m => times 的长度
+// 时间复杂度 O(n^2 + m)  m => times 的长度
 // 空间复杂度 O(n^2)
 public class Solution {
     /**
