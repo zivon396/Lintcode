@@ -1,5 +1,5 @@
 // 对于一个 submatrix, 可以先固定上下边界, 然后由 diff_1 - diff_2 生成 (即 diff 的 diff)
-// 时间复杂度 O(h^2 * w)
+// 时间复杂度 O(h^2 * w) => 相当于在 y 的方向上用 HashMap 节省了时间
 public class Solution {
     /*
      * @param matrix: an integer matrix
