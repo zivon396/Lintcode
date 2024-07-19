@@ -1,4 +1,5 @@
 // 对于一个 submatrix, 可以先固定上下边界, 然后由 diff_1 - diff_2 生成 (即 diff 的 diff)
+// 时间复杂度 O(h^2 * w)
 public class Solution {
     /*
      * @param matrix: an integer matrix
