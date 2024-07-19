@@ -1,4 +1,5 @@
 // 前缀和算法 => 分别计算出 房子数量/x坐标/y坐标 的前缀和, 再枚举每个邮局的点, 分别计算 4 个方向上的 cost
+// 时间复杂度 O(nm)
 public class Solution {
     /**
      * @param grid: a 2D grid
