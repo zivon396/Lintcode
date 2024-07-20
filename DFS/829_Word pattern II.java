@@ -18,9 +18,10 @@ public class Solution {
         if (pIndex >= p.length()){
             return sIndex >= s.length();
         }
-        if (sIndex >= s.length()){
-            return pIndex >= p.length();
-        }
+        // 这个判断用不到
+        // if (sIndex >= s.length()){
+        //     return pIndex >= p.length();
+        // }
 
         char pChar = p.charAt(pIndex);
         boolean flag = dict.containsKey(pChar);
