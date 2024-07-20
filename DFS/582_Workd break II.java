@@ -28,6 +28,7 @@ public class Solution {
             return res;
         }
 
+        // 这里很重要, 不然 for 循环里加不上
         if (wordDict.contains(s)){
             res.add(s);
         }
