@@ -38,6 +38,7 @@ public class Solution {
         boolean match;
         
         if (pChar == '*') {
+            // 这里真的很妙!
             match = isMatchHelper(s, sIndex, p, pIndex + 1, memo, visited) ||
                 isMatchHelper(s, sIndex + 1, p, pIndex, memo, visited);
         } else {
