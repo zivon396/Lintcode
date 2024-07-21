@@ -107,6 +107,7 @@ public class Solution {
 // 九章答案, 更优
 // BFS: end -> start, 找到每个 word 的前置, 存在 map 里
 // DFS: start -> end, 遍历每个 word 的每个前置
+// 心得: 打印方案的题就用前置 (prev) 来解
 public class Solution {
     public List<List<String>> findLadders(String start, String end,
             Set<String> dict) {
