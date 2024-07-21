@@ -1,4 +1,5 @@
-//version 1:
+// version 1
+// TrieNode 不自调
 public class Solution {
      class TrieNode {
         List<String> startWith;
@@ -15,6 +16,7 @@ public class Solution {
 
         Trie(String[] words) {
             root = new TrieNode();
+            
             for (String w : words) {
                 TrieNode cur = root;
                 for (char ch : w.toCharArray()) {
@@ -37,6 +39,7 @@ public class Solution {
 
                 cur = cur.children[idx];
             }
+            
             ans.addAll(cur.startWith);
             return ans;
         }
@@ -48,6 +51,7 @@ public class Solution {
             return ans;
         int len = words[0].length();
         Trie trie = new Trie(words);
+        
         List<String> ansBuilder = new ArrayList<>();
         for (String w : words) {
             ansBuilder.add(w);
@@ -69,6 +73,7 @@ public class Solution {
         StringBuilder prefixBuilder = new StringBuilder();
         for (String s : ansBuilder)
             prefixBuilder.append(s.charAt(idx));
+        
         List<String> startWith = tr.findByPrefix(prefixBuilder.toString());
         for (String sw : startWith) {
             ansBuilder.add(sw);
@@ -78,7 +83,8 @@ public class Solution {
     }
 }
 
-//version 2:
+// version 2
+// TrieNode 自调
 class TrieNode {
     public TrieNode[] children;
     public List<String> startWith;
@@ -138,6 +144,7 @@ public class Solution {
         for (String word: words){
             root.insert(word, 0);
         }
+        
         List<String> ansBuilder = new ArrayList<>();
         for (String w : words) {
             ansBuilder.add(w);
@@ -159,6 +166,7 @@ public class Solution {
         StringBuilder prefixBuilder = new StringBuilder();
         for (String s : ansBuilder)
             prefixBuilder.append(s.charAt(idx));
+        
         List<String> startWith = root.findByPrefix(prefixBuilder.toString(), 0);
         for (String sw : startWith) {
             ansBuilder.add(sw);
