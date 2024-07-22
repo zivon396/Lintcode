@@ -1,4 +1,5 @@
 // 从后往前, 找到第一个下降的数, swap, reverse
+// (也可以 reverse, swap)
 class Solution {
     public int[] nextPermutation(int[] nums) {
         int i = nums.length - 2;
