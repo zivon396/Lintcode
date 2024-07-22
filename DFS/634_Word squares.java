@@ -135,7 +135,6 @@ public class Solution {
         List<String> matchedWords = new ArrayList<String>(prefix.getOrDefault(pre, new ArrayList<>()));
         int m = matchedWords.size();
         for (int i = 0; i < m; i++) {
-
             squares.add(matchedWords.get(i));
             dfs();
             squares.remove(squares.size() - 1);
