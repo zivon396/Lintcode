@@ -55,3 +55,97 @@ public class Solution {
         return count;
     }
 }
+
+
+// 自创的 不知道为什么过不了
+public class Solution {
+    /**
+     * @param s: The input string
+     * @return: Return all possible results
+     *          we will sort your return value in output
+     */
+    private int maxLen = 0;
+    public List<String> removeInvalidParentheses(String s) {
+        // Write your code here
+        List<String> res = new ArrayList<>();
+        int[] count = getLeftRightCounts(s);
+        dfs("", s, count[0], count[1], 0, res);
+
+        if (res.size() == 0){
+            res.add("");
+        }
+
+        return res;
+    }
+
+    private void dfs (String pre,
+                 String s,
+                 int leftCount,
+                 int rightCount,
+                 int value,
+                 List<String> res){
+        if (value < 0){
+            return;
+        }
+        if (leftCount == rightCount && isValid(s, value)){
+            String result = pre + s;
+            if (result.length() < maxLen){
+                return;
+            }
+            maxLen = Math.max(maxLen, result.length());
+            res.add(pre + s);
+            return;
+        }
+        if (s.length() == 0){
+            return;
+        }
+
+        String now = s.substring(0, 1);
+        if (now.equals("(")){
+            dfs(pre + now, s.substring(1), leftCount, rightCount, value + 1, res);
+            if (pre.length() > 0 && !pre.substring(pre.length() - 1).equals("(")){
+                dfs(pre, s.substring(1), leftCount - 1, rightCount, value, res);
+            }
+        }
+        else if (now.equals(")")){
+            dfs(pre + now, s.substring(1), leftCount, rightCount, value - 1, res);
+            if (pre.length() > 0 && !pre.substring(pre.length() - 1).equals(")")){
+                dfs(pre, s.substring(1), leftCount, rightCount - 1, value, res);
+            }
+        }
+        else {
+            dfs(pre + now, s.substring(1), leftCount, rightCount, value, res);
+        }
+    }
+
+    private int[] getLeftRightCounts (String s){
+        int[] res = new int[2];
+        for (int i = 0; i < s.length(); i++){
+            if (s.charAt(i) == '('){
+                res[0]++;
+            }
+            if (s.charAt(i) == ')'){
+                res[1]++;
+            }
+        }
+
+        return res;
+    }
+
+    private boolean isValid (String s, int value){
+        for (int i = 0; i < s.length(); i++){
+            if (s.charAt(i) == '('){
+                value++;
+            }
+            if (s.charAt(i) == ')'){
+                value--;
+            }
+
+            if (value < 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
