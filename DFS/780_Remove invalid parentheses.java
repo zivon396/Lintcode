@@ -1,6 +1,7 @@
 // 和 427 还不太一样
 // leftCount => 剩下的还可以被抵消的 "("  (也就是 value)
 // rightCount => 在 leftCount 为 0 情况下出现的 ")"
+// 时间复杂度 O(n * 2^n)
 public class Solution {
  
     public List<String> removeInvalidParentheses(String s) {
