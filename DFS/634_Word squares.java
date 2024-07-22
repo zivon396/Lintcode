@@ -83,6 +83,67 @@ public class Solution {
     }
 }
 
+// Map 存 prefix
+public class Solution {
+    /*
+     * @param words: a set of words without duplicates
+     * @return: all word squares
+     */
+    private int wordlen = 0;
+    private Map<String, List<String>> prefix = new HashMap<String, List<String>>();
+    private List<String> squares = new ArrayList<String>();
+    private List<List<String>> res = new ArrayList<List<String>>();
+
+    public List<List<String>> wordSquares(String[] words) {
+        if (words == null || words.length == 0) {
+            return res;
+        }
+        initPrefixes(words);
+        wordlen = words[0].length();
+
+        dfs();
+
+        return res;
+    }
+
+    
+    private void initPrefixes(String[] words) {
+        for(String word: words) {
+            prefix.putIfAbsent("", new ArrayList<>());
+            prefix.get("").add(word);
+            String pre = "";
+            for (int i = 0; i < word.length(); i++) {
+                pre += word.charAt(i);
+                prefix.putIfAbsent(pre, new ArrayList<>());
+                prefix.get(pre).add(word);
+            }
+        }
+    }
+
+    private void dfs() {
+        int index = squares.size();
+        if (index == wordlen) {
+            res.add(new ArrayList<>(squares));
+            return;
+        }
+
+        String pre = "";
+        for (int i = 0; i < index; i++) {
+            pre += squares.get(i).charAt(index);
+        }
+
+        List<String> matchedWords = new ArrayList<String>(prefix.getOrDefault(pre, new ArrayList<>()));
+        int m = matchedWords.size();
+        for (int i = 0; i < m; i++) {
+
+            squares.add(matchedWords.get(i));
+            dfs();
+            squares.remove(squares.size() - 1);
+        }
+    }
+}
+
+
 // 纯 DFS 超时
 public class Solution {
     /**
