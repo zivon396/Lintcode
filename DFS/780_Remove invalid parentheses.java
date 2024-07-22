@@ -1,7 +1,9 @@
-// 和 427 还不太一样
-// leftCount => 剩下的还可以被抵消的 "("  (也就是 value)
-// rightCount => 在 leftCount 为 0 情况下出现的 ")"
-// 时间复杂度 O(n * 2^n)
+// 本质: 在 string 中选取最少的 char 组成 combination, 使得 string valid => startIndex & (i + 1)
+// 和 427 还不太一样:
+// count[0] => 剩下的还可以被抵消的 "("  (也就是 value)
+// count[1] => 在 count[0] 为 0 情况下出现的 ")"
+// 由遍历的顺序可以保证 => 一定是所有多出来的 ")" 最先按顺序被去掉. 而一旦它们全部被去掉之后, 就会保证所有完整的 "()" 都不再被去掉
+// 时间复杂度 O(n * 2^n) ???
 public class Solution {
  
     public List<String> removeInvalidParentheses(String s) {
@@ -14,6 +16,12 @@ public class Solution {
     }
     
     private void dfs(String s, int startIndex, int leftCount, int rightCount, List<String> results) {
+        // 这里的 leftCount 和 rightCount 和把新的 s 重新算出来的结果代表的意义不同
+        // )((())))))()(((l((((  7 4  7 4
+        //  ((())))))()(((l((((  7 3  7 3
+        //  ((()))   ()(((l((((  7 0  7 0
+        //  ((()))    )(((l((((  6 0  7 1
+        // 用 leftCount & rightCount 来判断, 到第三行就不能继续去掉左括号了, 因为要保证结果是最长的
         if(leftCount == 0 && rightCount == 0 && isStringValid(s)) {
             results.add(s);
             return;
