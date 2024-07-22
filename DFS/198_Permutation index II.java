@@ -1,3 +1,4 @@
+// 本质上, 把重复数字的可能排列数除掉
 public class Solution {
     /**
      * @param A: An array of integers
