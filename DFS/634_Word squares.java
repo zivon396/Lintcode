@@ -106,7 +106,6 @@ public class Solution {
         return res;
     }
 
-    
     private void initPrefixes(String[] words) {
         for(String word: words) {
             prefix.putIfAbsent("", new ArrayList<>());
