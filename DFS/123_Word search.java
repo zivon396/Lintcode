@@ -1,4 +1,5 @@
 // 注意 line 29 - 33 的出口比较巧妙
+// 一定记得加 break!
 public class Solution {
     /**
      * @param board: A list of lists of character
