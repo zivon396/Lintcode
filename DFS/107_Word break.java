@@ -1,5 +1,7 @@
 // DP
 // dp[i] => 前 i 个字符能否拆分成若干个单词
+// 时间复杂度 O(Cn) => C 为常数 (max length)
+// 空间复杂度 O(n)
 public class Solution {
     /*
      * @param s: A string
@@ -41,6 +43,7 @@ public class Solution {
 }
 
 // 记忆化搜索 stack overflow
+// 本质上还是 DFS, 组合问题时间复杂度为 2^n 级别. 调用次数太多导致溢栈
 public class Solution {
     /**
      * @param s: A string
