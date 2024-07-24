@@ -63,7 +63,6 @@ public class Solution {
         
         char tmp = board[x][y];
         board[x][y] = 0;  // mark board[x][y] as used
-        boolean flag = false;
         
         for (int i = 0; i < 4; i++) {
             if (!isValid(board, x + dx[i], y + dy[i])) {
