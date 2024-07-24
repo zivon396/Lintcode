@@ -1,3 +1,5 @@
+// 其实本题用 Trie 算多此一举
+// 参照 DFS 目录下答案, 用 word + index 即可
 class TrieNode {
     public Map<Character, TrieNode> children;
     public String word;
