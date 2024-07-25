@@ -63,7 +63,9 @@ class Solution {
         
         return stack;
     }
-    
+    // 挪到下一个节点
+    // 如果当前点存在右子树, 那么就是右子树中 "一路向西" 最左边的那个点
+    // 如果当前点不存在右子树, 则是从当前点往回走的路径中, 第一个右拐的点
     public void moveUpper(Stack<TreeNode> stack) {
         TreeNode node = stack.peek();
         if (node.right == null) {
@@ -80,7 +82,9 @@ class Solution {
             node = node.left;
         }
     }
-    
+    // 挪到上一个节点
+    // 如果当前点存在左子树, 那么就是左子树中 "一路向东" 最右边的那个点
+    // 如果当前点不存在左子树, 则是从当前点往回走的路径中, 第一个左拐的点
     public void moveLower(Stack<TreeNode> stack) {
         TreeNode node = stack.peek();
         if (node.left == null) {
