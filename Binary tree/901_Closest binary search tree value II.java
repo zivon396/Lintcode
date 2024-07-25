@@ -11,7 +11,7 @@
  */
 
 // 最优算法
-// 时间复杂度 O(k + log(n)) ? (还是 O(klog(n)) ?)
+// 时间复杂度 O(k + log(n)) => for 循环中找到 k 个节点需要 O(k), 均摊下来就是 O(1)
 // 空间复杂度 O(log(n))
 // getStack() => 在假装插入 target 的时候, 看看一路走过的节点都是哪些, 放到 stack 里, 用于 iterate
 // moveUpper(stack) => 根据 stack, 挪动到 next node
@@ -28,6 +28,7 @@ class Solution {
         Stack<TreeNode> lowerStack = getStack(root, target);
         Stack<TreeNode> upperStack = new Stack<>();
         upperStack.addAll(lowerStack);
+        // 这里是因为初始要使得 Lower 的 peek <= target && Upper 的 peek >= target
         if (target < lowerStack.peek().val) {
             moveLower(lowerStack);
         } else {
