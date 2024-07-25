@@ -1,5 +1,6 @@
 // 和 901 一样
 // 只不过初始路径是一直向左到最底
+// 访问所有节点用时 O(n), 均摊下来每个节点就是 O(1)
 public class BSTIterator {
     private Stack<TreeNode> stack = new Stack<>();
     
