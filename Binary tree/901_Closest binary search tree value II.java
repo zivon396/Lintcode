@@ -10,6 +10,96 @@
  * }
  */
 
+// 最优算法
+// 时间复杂度 O(k + log(n)) ? (还是 O(klog(n)) ?)
+// 空间复杂度 O(log(n))
+// getStack() => 在假装插入 target 的时候, 看看一路走过的节点都是哪些, 放到 stack 里, 用于 iterate
+// moveUpper(stack) => 根据 stack, 挪动到 next node
+// moveLower(stack) => 根据 stack, 挪动到 prev node
+// 有了这些函数之后, 就可以把整个树当作一个数组一样来处理, 只不过每次 i++ 的时候要用 moveUpper, i-- 的时候要用 moveLower
+class Solution {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        List<Integer> values = new ArrayList<>();
+        
+        if (k == 0 || root == null) {
+            return values;
+        }
+        
+        Stack<TreeNode> lowerStack = getStack(root, target);
+        Stack<TreeNode> upperStack = new Stack<>();
+        upperStack.addAll(lowerStack);
+        if (target < lowerStack.peek().val) {
+            moveLower(lowerStack);
+        } else {
+            moveUpper(upperStack);
+        }
+        
+        for (int i = 0; i < k; i++) {
+            if (lowerStack.isEmpty() ||
+                   !upperStack.isEmpty() && target - lowerStack.peek().val > upperStack.peek().val - target) {
+                values.add(upperStack.peek().val);
+                moveUpper(upperStack);
+            } else {
+                values.add(lowerStack.peek().val);
+                moveLower(lowerStack);
+            }
+        }
+
+        return values;
+    }
+    
+    private Stack<TreeNode> getStack(TreeNode root, double target) {
+        Stack<TreeNode> stack = new Stack<>();
+        
+        while (root != null) {
+            stack.push(root);
+            
+            if (target < root.val) {
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }
+        
+        return stack;
+    }
+    
+    public void moveUpper(Stack<TreeNode> stack) {
+        TreeNode node = stack.peek();
+        if (node.right == null) {
+            node = stack.pop();
+            while (!stack.isEmpty() && stack.peek().right == node) {
+                node = stack.pop();
+            }
+            return;
+        }
+        
+        node = node.right;
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+    }
+    
+    public void moveLower(Stack<TreeNode> stack) {
+        TreeNode node = stack.peek();
+        if (node.left == null) {
+            node = stack.pop();
+            while (!stack.isEmpty() && stack.peek().left == node) {
+                node = stack.pop();
+            }
+            return;
+        }
+        
+        node = node.left;
+        while (node != null) {
+            stack.push(node);
+            node = node.right;
+        }
+    }
+}
+
+
 // 暴力算法
 // O(n) O(n)
 public class Solution {
