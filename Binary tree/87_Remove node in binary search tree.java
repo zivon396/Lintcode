@@ -1,4 +1,6 @@
 // Version 1 (原创)
+// 时间复杂度 O(h), 空间复杂度 O(h)
+// 这个更快
 public class Solution {
     /**
      * @param root: The root of the binary search tree.
