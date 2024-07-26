@@ -62,7 +62,6 @@ public class Solution {
     public TreeNode inorderPredecessor(TreeNode root, TreeNode p) {
         // write your code here
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode pre = null;
         while (root != null) {
             stack.push(root);
             root = root.left;
