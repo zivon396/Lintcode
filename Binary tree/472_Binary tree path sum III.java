@@ -6,6 +6,7 @@
  * }
  */
 // 对每个节点为 path 的起点都 DFS 一遍 (line 31)
+// driver 相当于 traverse
 public class Solution {
     /*
      * @param root: the root of binary tree
