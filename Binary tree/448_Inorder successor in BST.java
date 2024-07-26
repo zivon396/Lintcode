@@ -60,3 +60,36 @@ public class Solution {
 }
 
 // Stack version
+// 类似 86
+public class Solution {
+    /**
+     * @param root: the given BST
+     * @param p: the given node
+     * @return: the in-order predecessor of the given node in the BST
+     */
+    TreeNode succ = null;
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        // write your code here
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null) {
+            stack.push(root);
+            root = root.right;
+        }
+        
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node == p) {
+                return succ;
+            }
+            succ = node;
+            
+            node = node.left;
+            while (node != null) {
+                stack.push(node);
+                node = node.right;
+            }
+        }
+
+        return null;
+    }
+}
