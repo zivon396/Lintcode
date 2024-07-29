@@ -1,5 +1,4 @@
 // 类似先序遍历
-// 对照 1360
 public class Solution {
     /**
      * @param t1: the root of the first tree
