@@ -1,3 +1,4 @@
+// 因为要保持原有 order, 不能用相向指针
 public class Solution {
     /**
      * @param nums: an integer array
