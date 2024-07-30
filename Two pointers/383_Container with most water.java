@@ -13,7 +13,7 @@ public class Solution {
         // write your code here
         int ans = 0;
         int left = 0, right = heights.length - 1;
-        while (left <= right) {
+        while (left < right) {
             ans = Math.max(ans, computeArea(left, right, heights));
             if (heights[left] <= heights[right])
                 left++;
