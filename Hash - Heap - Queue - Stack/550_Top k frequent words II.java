@@ -16,6 +16,7 @@ public class TopK {
             if (left_count != right_count) {
                 return right_count - left_count;
             }
+            
             return left.compareTo(right);
         }
     };
@@ -29,6 +30,8 @@ public class TopK {
 
     public void add(String word) {
         // Write your code here
+        // 这里也可以化简, 但是要改 myComparator (line 14-15 改成 getOrDefault)
+        // 因为 TreeSet 在 call contains() 的时候也用了 Comparator
         if (words.containsKey(word)) {
             if (topk.contains(word))
                 topk.remove(word);
@@ -47,10 +50,11 @@ public class TopK {
         // Write your code here
         List<String> results = new ArrayList<String>();
         Iterator it = topk.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
              String str = (String)it.next();
              results.add(str);
         }
+        
         return results;
     }
 }
