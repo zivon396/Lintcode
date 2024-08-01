@@ -1,4 +1,9 @@
 class Stack {
+    private List<Integer> array;
+    public Stack (){
+       this.array = new ArrayList<Integer>();
+    }
+
     // Push a new item into the stack
     public void push(int x) {
         // Write your code here
@@ -10,7 +15,7 @@ class Stack {
         // Write your code here
         int n = array.size();
         if (n > 0)
-            array.remove(n-1);
+            array.remove(n - 1);
         return;
     }
 
@@ -18,7 +23,7 @@ class Stack {
     public int top() {
         // Write your code here
         int n = array.size();
-        return array.get(n-1);
+        return array.get(n - 1);
     }
 
     // Check the stack is empty or not.
@@ -26,6 +31,4 @@ class Stack {
         // Write your code here
         return array.size() == 0;
     }
-
-    private List<Integer> array = new ArrayList<Integer>();
 }
