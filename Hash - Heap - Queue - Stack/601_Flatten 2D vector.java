@@ -37,7 +37,9 @@ public class Vector2D implements Iterator<Integer> {
     public void remove() {}
 }
 
-// 两个栈
+// 两个 Stack
+// 用两个 Queue 也可以
+// 用一个 Stack/Queue 不行, 浪费空间
 public class Vector2D implements Iterator<Integer> {
     Stack<List<Integer>> stack = new Stack<>();
     Stack<Integer> stackj;
