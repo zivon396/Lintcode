@@ -1,4 +1,6 @@
 // TreeMap + DP
+// dp[i][0] 既表示以 even jump 到达 i 时能否最终抵达 n - 1, 也表示以 i 为起点能否最终抵达 n - 1
+// 倒着做 dp, 可以保证每次都只在 i 的后面找满足条件的元素
 public class Solution {
     /**
      * @param A: An integer array A
