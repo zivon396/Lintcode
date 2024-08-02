@@ -1,5 +1,100 @@
-// Monotonic Stack + DP
+// Monotonic Stack + DP (符合模板的版本, 也最好理解)
+// 和 1206 一样. 1206 是在所有 index > 当前 index 的元素里, 找到 index 最小的, 满足 value > 当前 value 的元素
+//              1778 是在所有 value ≥ 当前 value 的元素里, 找到 value 最小的, 满足 index > 当前 index 的元素
 // 时间复杂度 O(nlog(n)) -> 排序, 空间复杂度 O(n)
+class Pair {
+    int index, value;
+    Pair(int index, int value) {
+        this.index = index;
+        this.value = value;
+    }
+}
+
+public class Solution {
+    public int oddEvenJumps(int[] A) {
+        // change A into value index pair.
+        Pair[] pairs = new Pair[A.length];
+        for (int index = 0; index < A.length; index++) {
+            pairs[index] = new Pair(index, A[index]);
+        }
+        
+        sortPairs(pairs, 1);
+        int[] oddJump = getJump(pairs);
+        
+        sortPairs(pairs, -1);
+        int[] evenJump = getJump(pairs);
+
+        // dp = array of n x 2
+        // dp[i][0] can we jump to n - 1 when we arrive i by even jumps
+        // dp[i][1] can we jump to n - 1 when we arrive i by odd jumps
+        int n = A.length;
+        boolean[][] dp = new boolean[n][2];
+        for (int i = 0; i < n; i++) {
+            dp[i][0] = false;
+            dp[i][1] = false;
+        }
+        
+        dp[n - 1][0] = dp[n - 1][1] = true;
+        
+        int answer = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            dp[i][0] = oddJump[i] != -1 ? dp[oddJump[i]][1] : false;
+            dp[i][1] = evenJump[i] != -1 ? dp[evenJump[i]][0] : false;
+            if (dp[i][0] == true) {
+                answer++;
+            }
+        }
+
+        return answer;
+    }
+    
+    // [10,13,12,14,15]
+    // Odd: 10 12 13 14 15
+    //       1  3  2  4  5
+    // Even: 15 14 13 12 10
+    //        5  4  2  3  1
+    // [2,3,1,1,4]
+    // Odd: 1 1 2 3 4
+    //      3 4 1 2 5
+    private int[] getJump(Pair[] pairs) {
+        int[] jump = new int[pairs.length];
+        Arrays.fill(jump, -1);
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i <= pairs.length; i++) {
+            int index = -1;
+            if (i < pairs.length){
+                index = pairs[i].index;
+            }
+            monoDescPush(stack, index, jump);
+        }
+
+        return jump;
+    }
+    
+    private void sortPairs(Pair[] pairs, int order) {
+        Arrays.sort(pairs, new Comparator<Pair>() {
+            public int compare(Pair a, Pair b) {
+                if (a.value == b.value) {
+                    // for the same value, sort index in asc order.
+                    return a.index - b.index;
+                }
+                return order * (a.value - b.value);
+            }
+        });
+    }
+    
+    private void monoDescPush(Stack<Integer> stack, int value, int[] jump) {
+        // 按 index 单调递减入栈
+        while (!stack.isEmpty() && stack.peek() <= value) {
+            jump[stack.pop()] = value;
+        }
+
+        stack.add(value);
+    }
+}
+
+// Monotonic Stack + DP
+// 九章版本 (一种奇怪的版本)
 class Pair {
     int index, value;
     Pair(int index, int value) {
