@@ -1,4 +1,5 @@
 // Monotonic Stack + DP
+// 时间复杂度 O(nlog(n)) -> 排序, 空间复杂度 O(n)
 class Pair {
     int index, value;
     Pair(int index, int value) {
@@ -90,6 +91,7 @@ public class Solution {
 // TreeMap + DP
 // dp[i][0] 既表示以 even jump 到达 i 时能否最终抵达 n - 1, 也表示以 i 为起点能否最终抵达 n - 1
 // 倒着做 dp, 可以保证每次都只在 i 的后面找满足条件的元素
+// 时间复杂度 < O(nlog(n)) -> n 次 查询 + 写入, 空间复杂度 O(n)
 public class Solution {
     /**
      * @param A: An integer array A
