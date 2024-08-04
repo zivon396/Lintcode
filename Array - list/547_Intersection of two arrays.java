@@ -35,7 +35,7 @@ public class Solution {
     }
 }
 
-// version 2: hash map
+// version 2: set
 public class Solution {
     /**
      * @param nums1 an integer array
