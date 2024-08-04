@@ -36,6 +36,7 @@ public class Solution {
 }
 
 // version 2: set
+// 像 548 一样每次 remove 掉 hash 中的元素也可以
 public class Solution {
     /**
      * @param nums1 an integer array
