@@ -1,3 +1,4 @@
+// 就看成被分割为一个个小方块
 public class NumMatrix {
     private int[][] arr, bit;
     int n, m;
