@@ -1,4 +1,5 @@
-// 就看成被分割为一个个小方块
+// 就看成: 整个矩阵被分割为一个个小方块
+// 每个 prefixSum[i][j] 管辖其中一个方块
 public class NumMatrix {
     private int[][] arr, bit;
     int n, m;
