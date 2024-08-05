@@ -29,3 +29,44 @@ public class Solution {
 }
 
 // Monotonic Stack
+// 单调栈应用面 +1: 寻找 index 最小的, 右边存在比它大的数的数
+public class Solution {
+    public int maximumSwap(int num) {
+        String strNum = String.valueOf(num);
+        char[] digits = strNum.toCharArray();
+        
+        Stack<Integer> stack = new Stack<>();
+        int left = digits.length;
+        // find left index for swap
+        for (int i = 0; i < digits.length; i++) {
+            while (!stack.isEmpty() && digits[stack.peek()] < digits[i]) {
+                int index = stack.pop();
+                left = Math.min(left, index);
+            }
+            stack.push(i);
+        }
+        
+        // max swap exists
+        if (left < digits.length) {
+            int right = -1;
+            char max = digits[left];
+            // find right index for swap
+            for (int i = left; i < digits.length; i++) {
+                if (digits[i] >= max) {
+                    right = i;
+                    max = digits[i];
+                }
+            }
+            
+            swap(digits, left, right);
+        }
+        
+        return Integer.parseInt(new String(digits));
+    }
+    
+    private void swap(char[] digits, int i, int j) {
+        char temp = digits[i];
+        digits[i] = digits[j];
+        digits[j] = temp;
+    }
+}
