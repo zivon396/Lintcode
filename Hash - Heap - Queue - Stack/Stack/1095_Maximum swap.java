@@ -29,7 +29,7 @@ public class Solution {
 }
 
 // Monotonic Stack
-// 单调栈应用面 +1: 寻找 index 最小的, 右边存在比它大的数的数
+// 单调栈应用面 +1: 寻找 index 最小/大的, 右边存在比它大的数的数
 public class Solution {
     public int maximumSwap(int num) {
         String strNum = String.valueOf(num);
