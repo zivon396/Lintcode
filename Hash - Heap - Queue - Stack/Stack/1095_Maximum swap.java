@@ -1,4 +1,5 @@
 // 统计出每一位数字最后出现的位置, 然后从最高位开始, 对于每一位尝试寻找一个在它右边的最大的数, 若能找到, 直接交换即可
+// 时间复杂度 O(n)
 public class Solution {
     /**
      * @param num: a non-negative intege
