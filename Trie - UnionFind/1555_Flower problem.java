@@ -104,6 +104,7 @@ public class Solution {
 }
 
 // 这个版本是必须同时有且仅有 m 簇, 每簇 ≥ k
+// 利用 TreeSet 维护最小簇
 class UnionFind {
     private int[] father;
     private int[] size;
