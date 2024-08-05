@@ -1,4 +1,6 @@
 // Deque 里存的是 index
+// 本质上就是可以 pop first 的单调栈
+// 单调栈应用 +1: 维持 stream 的最大值
 public class Solution {
     /**
      * @param nums: A list of integers.
