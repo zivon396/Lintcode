@@ -34,7 +34,7 @@ public class Solution {
                     for (int j = 0; j < number; j++) {
                         string += str;
                     }
-                stack.push(string);
+                    stack.push(string);
                 }
             }
         }
