@@ -11,6 +11,10 @@
  */
 // version 1: for + while
 // 和模板一样, 每次先 pop, 然后和 peek 比较
+// Assumption:
+// 一个 node 的左子树 -> 它左边遇到比它大的数之前的所有数组成的树
+// 一个 node 的右子树 -> 它右边遇到比它大的数之前的所有数组成的树
+// 单调递减栈中, 每逢增加 -> stack.peek() 一定是叶子结点
 public class Solution {
     /**
      * @param A: Given an integer array with no duplicates.
@@ -24,19 +28,19 @@ public class Solution {
         for (int i = 0; i <= A.length; i++){
             TreeNode node = i == A.length ? new TreeNode(Integer.MAX_VALUE) : new TreeNode(A[i]);
             while (!stack.isEmpty() && node.val > stack.peek().val){
-                TreeNode son = stack.pop();
+                TreeNode son = stack.pop(); // son 一定是叶子结点 / 某个节点的孩子 -> 接下来的任务就是找到它的 parent
                 if (stack.isEmpty()){
-                    // 已知 son 的右边没有比 son 大的, stack 空说明 son 的左边也没有比 son 大的了, 因此 son 就是 node 左边最大的
+                    // 栈空 -> 它的 parent 一定就是 node
                     node.left = son;
                     break;
                 }
                 
                 TreeNode left = stack.peek();
                 if (left.val < node.val){
-                    // 说明 peek 右边比 peek 大的只有 son 一个
+                    // 说明 peek 右边遇到比 peek 大的数之前只有 son 一个
                     left.right = son;
                 } else {
-                    // 说明 node 左边比 node 小的只有 son 一个
+                    // 说明 node 左边遇到比 node 大的数之前只有 son 一个
                     node.left = son;
                 }
             }
