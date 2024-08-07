@@ -53,6 +53,7 @@ public class Solution {
 
 // version 2: 无 while loop 版
 // 必须 push 完之后先生成下一个 node, 不然 i-- 之后每次会生成新的 TreeNode
+// 也可以每次先生成的时候判断一下是否重复
 public class Solution {
     /**
      * @param A: Given an integer array with no duplicates.
