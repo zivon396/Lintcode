@@ -1,5 +1,3 @@
-// 两种答案现在都在 95% 的时候 fail 了
-
 // version 1: Heap
 // 不同于 81, 不用额外保存一个 median, 因为涉及到删除可能会麻烦. 直接每次输出 maxHeap 的 peek.
 // !!!永远满足: 1) maxHeap 里的所有元素都小于 minHeap 里的所有元素 2) 每次加完一定有 maxHeap.size() = half
@@ -65,7 +63,11 @@ public class Solution {
     }
 }
 
-// 九章答案版本
+
+// 下面两种答案现在都在 95% 的时候 fail 了
+
+// Heap 九章答案版本
+// Fail 的原因是 heapCom. 如果用 Collections.reverseOrder() 就可以通过
 public class Solution {
     /**
      * @param nums: A list of integers
@@ -202,7 +204,7 @@ class Node implements Comparable<Node>{
         this.val = val;
     }
     public int compareTo(Node other) {
-        Node a =(Node)other;
+        Node a = (Node)other;
         if (this.val == a.val) {
             return this.id - a.id;
         }
