@@ -75,12 +75,12 @@ public class Solution {
 
 
 // BFS 版本
+// 对每个边缘上的 0 进行 BFS, 将遍历过的 0 都置为 F
 public class Solution {
     static final int[] directionX = { +1, -1, 0, 0 };
     static final int[] directionY = { 0, 0, +1, -1 };
 
     static final char FREE = 'F';
-    static final char TRAVELED = 'T';
 
     public void surroundedRegions(char[][] board) {
         if (board.length == 0) {
@@ -119,11 +119,11 @@ public class Solution {
         }
 
         Queue<Node> queue = new LinkedList<Node>();
+        board[i][j] = FREE;
         queue.offer(new Node(i, j));
 
         while (!queue.isEmpty()) {
             Node crt = queue.poll();
-            board[crt.x][crt.y] = FREE;
 
             for (Node node : expand(board, crt)) {
                 queue.offer(node);
@@ -140,7 +140,7 @@ public class Solution {
 
             // check validity
             if (x >= 0 && x < board.length && y >= 0 && y < board[0].length && board[x][y] == 'O') {
-                board[x][y] = TRAVELED;
+                board[x][y] = FREE;
                 expansion.add(new Node(x, y));
             }
         }
