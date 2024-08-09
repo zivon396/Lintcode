@@ -1,4 +1,5 @@
 // 双循环遍历 matrix, 每个点都 connect 一下周围 4 个点
+// 也可以只遍历一次, 每次 count++, 然后和 4 个邻居 connect
 class UnionFind {
     public int[] father = null;
     public int count;
