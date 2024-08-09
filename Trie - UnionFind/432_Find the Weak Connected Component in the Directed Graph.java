@@ -54,7 +54,6 @@ public class Solution {
         UnionFind uf = new UnionFind(hashSet);
 
         for (DirectedGraphNode now : nodes) {
-
             for (DirectedGraphNode neighbour : now.neighbors) {
                 uf.union(now.label, neighbour.label);
             }
