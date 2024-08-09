@@ -66,8 +66,8 @@ public class Solution {
     }
     
     public List<List<Integer> > print(HashSet<Integer> hashSet, UnionFind uf) {
-        List<List<Integer> > ans = new ArrayList<List<Integer> >();
-        HashMap<Integer, List<Integer> > hashMap = new HashMap<Integer, List<Integer> >();
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        HashMap<Integer, List<Integer>> hashMap = new HashMap<Integer, List<Integer>>();
         
         for (int i : hashSet) {
             int fa = uf.find(i);
